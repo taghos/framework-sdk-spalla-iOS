@@ -1,0 +1,68 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SpallaSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+import GoogleCast
+@_exported import SpallaSDK
+import Swift
+import SwiftUI
+import THEOplayerSDK
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public enum SpallaPlayerEvent {
+  case play
+  case playing
+  case pause
+  case waiting
+  case ended
+  case durationUpdate(time: Foundation.TimeInterval)
+  case error(error: Swift.String, canRetry: Swift.Bool)
+  case timeUpdate(time: Foundation.TimeInterval)
+}
+public protocol SpallaPlayerListener {
+  func onEvent(event: SpallaSDK.SpallaPlayerEvent)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SpallaPlayerViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public func setup(with contentId: Swift.String, isLive: Swift.Bool, hideUI: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func startAnalytics()
+  @_Concurrency.MainActor(unsafe) public func stopAnalytics()
+  @_Concurrency.MainActor(unsafe) public func registerPlayerListener(listener: any SpallaSDK.SpallaPlayerListener)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+public struct SpallaPlayerSwiftUI : SwiftUI.UIViewControllerRepresentable {
+  public typealias UIViewControllerType = SpallaSDK.SpallaPlayerViewController
+  public let contentId: Swift.String?
+  public let isLive: Swift.Bool
+  public let hideUI: Swift.Bool
+  public init(contentId: Swift.String?, isLive: Swift.Bool, hideUI: Swift.Bool = true)
+  @_Concurrency.MainActor(unsafe) public func makeUIViewController(context: SpallaSDK.SpallaPlayerSwiftUI.Context) -> SpallaSDK.SpallaPlayerViewController
+  @_Concurrency.MainActor(unsafe) public func updateUIViewController(_ uiViewController: SpallaSDK.SpallaPlayerViewController, context: SpallaSDK.SpallaPlayerSwiftUI.Context)
+  @_Concurrency.MainActor(unsafe) public static func dismantleUIViewController(_ uiViewController: SpallaSDK.SpallaPlayerViewController, coordinator: SpallaSDK.SpallaPlayerSwiftUI.Coordinator)
+  @_Concurrency.MainActor(unsafe) public func makeCoordinator() -> SpallaSDK.SpallaPlayerSwiftUI.Coordinator
+  @_hasMissingDesignatedInitializers public class Coordinator : SpallaSDK.SpallaPlayerListener {
+    public func onEvent(event: SpallaSDK.SpallaPlayerEvent)
+    @objc deinit
+  }
+  public typealias Body = Swift.Never
+}
+@_hasMissingDesignatedInitializers public class Spalla {
+  public static let shared: SpallaSDK.Spalla
+  public func initialize(token: Swift.String, license: Swift.String, applicationId: Swift.String?)
+  public func setSessionId(token: Swift.String)
+  public func getSessionId() -> Swift.String?
+  public func getSpallaToken() -> Swift.String?
+  @objc deinit
+}

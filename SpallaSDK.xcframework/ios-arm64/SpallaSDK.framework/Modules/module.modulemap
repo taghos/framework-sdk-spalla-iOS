@@ -1,0 +1,11 @@
+framework module SpallaSDK {
+  umbrella header "SpallaSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module SpallaSDK.Swift {
+  header "SpallaSDK-Swift.h"
+  requires objc
+}
