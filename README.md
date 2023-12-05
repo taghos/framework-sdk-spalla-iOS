@@ -12,22 +12,27 @@ Spalla required THEOPlayer added to the project to work properly. Depending on t
 
 ### Cocoapods
 
+CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit their [website](https://www.cocoapods.org). To integrate SpallaSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
 ```rb
 pod 'SpallaSDK'
 ```
 
 ### Swift Package Manager
 
-Open the project > Package Dependencies and click on the "+" sign. Then just add a link this git repository on the search and it should fetch the SDK automatically. 
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
 
-```
-https://github.com/taghos/framework-sdk-spalla-iOS
+Once you have your Swift package set up, adding SpallaSDK as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "0.4.0"))
+]
 ```
 
 ### Manually
 
-Download the latest release. Drag SpallaSDK.xcframework (make sure to copy if needed if the files are outside your project). Go to the project and change to Embed & Sign for SpallaSDK.
-
+Download the latest release from [Github](https://github.com/taghos/framework-sdk-spalla-iOS/releases). Drag SpallaSDK.xcframework (make sure to copy if needed if the files are outside your project). Go to the project and change to Embed & Sign for SpallaSDK.
 
 # Usage
 
@@ -56,7 +61,7 @@ SpallaPlayerSwiftUI(contentId: contentId, isLive: isLive)
 
 # Events
 
-The player will 
+The player will dispatch some key events while it's playing any content. The view controller has a method `registerPlayerListener` that subscribes a listener to receive events. The listener must conform to `SpallaPlayerListener` protocol, which has only a single method `onEvent`
 
 # Analytics
 
@@ -67,6 +72,7 @@ Spalla.shared.setSessionId(token: token)
 ```
 
 This will enable all analytics on the Spalla Player automatically. No Analytics will be recorded if the session id is not set.
+
 
 # Troubleshooting
 
