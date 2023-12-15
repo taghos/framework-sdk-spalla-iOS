@@ -8,7 +8,6 @@ Spalla SDK contains a player solution that can automatically handle any content 
 
 SpallaSDK requires iOS 13. If you need to support a lower version, please contact us. It's on the road map to separate SwiftUI from UIKit so it's possible to prioritize it if needed.
 
-Spalla required THEOPlayer added to the project to work properly. Depending on the version used, you may have to install GoogleInteractiveMediaAds and GoogleCast. Please follow the instructions from THEO player installation page.
 
 ### Cocoapods
 
@@ -26,20 +25,20 @@ Once you have your Swift package set up, adding SpallaSDK as a dependency is as 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "0.4.0"))
+    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "0.6.0"))
 ]
 ```
 
 ### Manually
 
-Download the latest release from [Github](https://github.com/taghos/framework-sdk-spalla-iOS/releases). Drag SpallaSDK.xcframework (make sure to copy if needed if the files are outside your project). Go to the project and change to Embed & Sign for SpallaSDK.
+Download the latest release from [Github](https://github.com/taghos/framework-sdk-spalla-iOS/releases). Drag SpallaSDK.xcframework, THEOPlayer.xcframework and Googlecast.xcframework (make sure to copy if needed if the files are outside your project). Go to the project and change to Embed & Sign for all three frameworks.
 
 # Usage
 
 At app start, call the initializer. You need to have a license from THEO player and a Spalla Token from us.
 
 ```swift
-Spalla.shared.initialize(token: "{Spalla token}, license: "{Theo license}", applicationId: "{Chromecast application id}")
+Spalla.shared.initialize(applicationId: "{Chromecast application id}")
 ```
 
 ### UIKit
@@ -51,17 +50,58 @@ vc.setup(with: "{Spalla content_id}", isLive: false)
 self.navigationController?.pushViewController(vc, animated: true)
 ```
 
+The ViewController also exposes some player functions, like `play`, `pause`, `mute`, `unmute`, ``
+
+#### UIKit Events
+
+The player will dispatch some key events while it's playing any content. The view controller has a method `registerPlayerListener` that subscribes a listener to receive events. The listener must conform to `SpallaPlayerListener` protocol, which has only a single method `onEvent`
+
 ### SwiftUI
 
 We have a Player view that encapsulates the same view controller that is used on UIKit. Just add it to your swift code as this
 
 ```swift
-SpallaPlayerSwiftUI(contentId: contentId, isLive: isLive)
+SpallaPlayerSwiftUI(contentId: contentId, isLive: isLive, controller: nil)
 ```
 
-# Events
+If you need to control the player from outside, pass a `PlayerController` to the view.
 
-The player will dispatch some key events while it's playing any content. The view controller has a method `registerPlayerListener` that subscribes a listener to receive events. The listener must conform to `SpallaPlayerListener` protocol, which has only a single method `onEvent`
+```swift
+@ObservedObject var playerController = PlayerController()
+
+var body: some View {
+    VStack {
+        SpallaPlayerSwiftUI(contentId: contentId, isLive: isLive, controller: playerController)
+    }
+}
+
+```
+
+The `PlayerController` allows you to call all player functions like `play`, `pause`, `seekTo`, `mute` and `unmute`. Also, as it's an `ObservableOject`, you can use it to track the state of the player. It exposes the player state with `isPlaying`, `isMuted`, `isBuffering`, `currentTime` and `duration`.
+
+For example, you can add a label to display the current time and a play/pause button with something like this:
+
+```swift
+    @ObservedObject var playerController = PlayerController()
+    let contentId: String = "some id"
+    
+    var body: some View {
+        VStack {
+            
+            SpallaPlayerSwiftUI(contentId: contentId, isLive: false, controller: playerController)
+            Button(playerController.isPlaying ? "Pause" : "Play", action: {
+                playerController.togglePlayPause()
+            })
+            Button("FF 10 secs", action: {
+                playerController.seekTo(time: playerController.currentTime + 10)
+            })
+            Text("Time: \(playerController.currentTime)")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+```
+
 
 # Analytics
 
