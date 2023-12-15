@@ -50,7 +50,7 @@ vc.setup(with: "{Spalla content_id}", isLive: false)
 self.navigationController?.pushViewController(vc, animated: true)
 ```
 
-The ViewController also exposes some player functions, like `play`, `pause`, `mute`, `unmute`, ``
+The ViewController also exposes some player functions, like `play`, `pause`, `mute`, `unmute` and `seekTo`.
 
 #### UIKit Events
 
