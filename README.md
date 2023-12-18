@@ -25,7 +25,7 @@ Once you have your Swift package set up, adding SpallaSDK as a dependency is as 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "0.6.0"))
+    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "0.6.1"))
 ]
 ```
 
@@ -35,7 +35,7 @@ Download the latest release from [Github](https://github.com/taghos/framework-sd
 
 # Usage
 
-At app start, call the initializer. You need to have a license from THEO player and a Spalla Token from us.
+At app start, call the initializer. Pass your Chromecast receiver app id if you have one, otherwise just send nil.
 
 ```swift
 Spalla.shared.initialize(applicationId: "{Chromecast application id}")
@@ -102,6 +102,23 @@ For example, you can add a label to display the current time and a play/pause bu
 
 ```
 
+# Customize UI
+
+We have a default html UI that supports no customization currently. We are working on customization options, but it may take a while.
+
+If you want, you may initialize the player with a hideUI option and implements the UI by yourself. 
+
+### UIKit:
+
+```
+vc.setup(with: "{Spalla content_id}", isLive: false, hideUI: true)
+```
+
+### SwiftUI
+
+```
+SpallaPlayerSwiftUI(contentId: contentId, isLive: false, hideUI: true, controller: playerController)
+```
 
 # Analytics
 
