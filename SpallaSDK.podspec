@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
     s.name          = 'SpallaSDK'
-    s.version       = '0.6.0'
+    s.version       = '0.6.1'
     s.summary       = 'Spalla Player with Analytics'
     s.homepage      = 'https://github.com/taghos/framework-sdk-spalla-iOS'
     s.license       = { :type => 'MIT' }
     s.author        = { 'SpallaSDK' => 'roja@bunker79.com' }
-    s.source        = { :git => "https://github.com/taghos/framework-sdk-spalla-iOS.git", :tag => 'v0.6.0' }
+    s.source        = { :git => "https://github.com/taghos/framework-sdk-spalla-iOS.git", :tag => 'v0.6.1' }
     s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' } 
     s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.swift_version = '5.0'
