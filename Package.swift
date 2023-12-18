@@ -8,7 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "SpallaSDK",
-            targets: ["SpallaSDK", "SpallaFramework"])
+            targets: ["SpallaSDK", "SpallaFramework", "TheoSDK"])
     ],
     dependencies: [
         .package(url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios.git", .upToNextMajor(from: "3.18.5")),
@@ -22,6 +22,9 @@ let package = Package(
           name: "SpallaFramework",
           path: "SpallaSDK.xcframework"
         ),
-        .binaryTarget()
+        .binaryTarget(
+            name: "TheoSDK",
+            path: "THEOplayerSDK.xcframework"
+        )
     ]
 )
