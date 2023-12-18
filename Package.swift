@@ -11,13 +11,13 @@ let package = Package(
             targets: ["SpallaSDK", "SpallaFramework"])
     ],
     dependencies: [
-        .package(name: "IMA", url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios.git", .upToNextMajor(from: "3.18.5")),
+        .package(url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios.git", .upToNextMajor(from: "3.18.5")),
     ],
     targets: [
         .target(
             name: "SpallaSDK",
             dependencies: [
-                "IMA",
+                .product(name: "GoogleInteractiveMediaAds", package: "swift-package-manager-google-interactive-media-ads-ios"),
                 "TheoSDK",
                 "GoogleCast"
             ],
