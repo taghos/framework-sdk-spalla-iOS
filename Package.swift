@@ -8,15 +8,21 @@ let package = Package(
     products: [
         .library(
             name: "SpallaSDK",
-            targets: ["SpallaSDK", "SpallaFramework", "TheoSDK"])
+            targets: ["SpallaSDK", "SpallaFramework"])
     ],
     dependencies: [
-        .package(url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios.git", .upToNextMajor(from: "3.18.5")),
+        .package(name: "IMA", url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios.git", .upToNextMajor(from: "3.18.5")),
     ],
     targets: [
         .target(
             name: "SpallaSDK",
+            dependencies: [
+                "IMA",
+                "TheoSDK",
+                "GoogleCast"
+            ],
             path: "Sources"
+            
         ),
         .binaryTarget(
           name: "SpallaFramework",
@@ -25,6 +31,10 @@ let package = Package(
         .binaryTarget(
             name: "TheoSDK",
             path: "THEOplayerSDK.xcframework"
+        ),
+        .binaryTarget(
+            name: "GoogleCast",
+            path: "GoogleCast.xcframework"
         )
     ]
 )
