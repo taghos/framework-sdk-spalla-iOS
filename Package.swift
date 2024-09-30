@@ -11,7 +11,7 @@ let package = Package(
             targets: ["SpallaSDK", "SpallaFramework"])
     ],
     dependencies: [
-        .package(url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios.git", .upToNextMajor(from: "3.18.5")),
+        .package(url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios.git", .upToNextMajor(from: "3.23.0")),
     ],
     targets: [
         .target(
