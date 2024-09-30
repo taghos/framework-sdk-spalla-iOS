@@ -1,0 +1,149 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name SpallaSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import Combine
+import Foundation
+import GoogleCast
+@_exported import SpallaSDK
+import Swift
+import SwiftUI
+import THEOplayerSDK
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public enum SpallaPlayerEvent {
+  case play
+  case playing
+  case pause
+  case waiting
+  case ended
+  case durationUpdate(time: Foundation.TimeInterval)
+  case error(error: Swift.String, canRetry: Swift.Bool)
+  case timeUpdate(time: Foundation.TimeInterval)
+  case muted
+  case unmuted
+}
+public protocol SpallaPlayerListener {
+  func onEvent(event: SpallaSDK.SpallaPlayerEvent)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class SpallaPlayerViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public func setup(with contentId: Swift.String, isLive: Swift.Bool, hideUI: Swift.Bool = false)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor @preconcurrency public func startAnalytics()
+  @_Concurrency.MainActor @preconcurrency public func stopAnalytics()
+  @_Concurrency.MainActor @preconcurrency public func registerPlayerListener(listener: any SpallaSDK.SpallaPlayerListener)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency public func play()
+  @_Concurrency.MainActor @preconcurrency public func pause()
+  @_Concurrency.MainActor @preconcurrency public func seekTo(time: Foundation.TimeInterval)
+  @_Concurrency.MainActor @preconcurrency public func mute()
+  @_Concurrency.MainActor @preconcurrency public func unmute()
+  @objc deinit
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@_Concurrency.MainActor @preconcurrency public struct SpallaPlayerSwiftUI : SwiftUI.UIViewControllerRepresentable {
+  public typealias UIViewControllerType = SpallaSDK.SpallaPlayerViewController
+  @_Concurrency.MainActor @preconcurrency public let contentId: Swift.String?
+  @_Concurrency.MainActor @preconcurrency public let isLive: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public let hideUI: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public init(contentId: Swift.String?, isLive: Swift.Bool, hideUI: Swift.Bool = false, controller: SpallaSDK.PlayerController?)
+  @_Concurrency.MainActor @preconcurrency public func makeUIViewController(context: SpallaSDK.SpallaPlayerSwiftUI.Context) -> SpallaSDK.SpallaPlayerViewController
+  @_Concurrency.MainActor @preconcurrency public func updateUIViewController(_ uiViewController: SpallaSDK.SpallaPlayerViewController, context: SpallaSDK.SpallaPlayerSwiftUI.Context)
+  @_Concurrency.MainActor @preconcurrency public static func dismantleUIViewController(_ uiViewController: SpallaSDK.SpallaPlayerViewController, coordinator: SpallaSDK.SpallaPlayerSwiftUI.Coordinator)
+  @_Concurrency.MainActor @preconcurrency public func makeCoordinator() -> SpallaSDK.SpallaPlayerSwiftUI.Coordinator
+  @_hasMissingDesignatedInitializers public class Coordinator : SpallaSDK.SpallaPlayerListener {
+    public func onEvent(event: SpallaSDK.SpallaPlayerEvent)
+    @objc deinit
+  }
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias Body = Swift.Never
+}
+public class PlayerController : Combine.ObservableObject {
+  @Combine.Published @_projectedValueProperty($isPlaying) public var isPlaying: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $isPlaying: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($currentTime) public var currentTime: Foundation.TimeInterval {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $currentTime: Combine.Published<Foundation.TimeInterval>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($duration) public var duration: Foundation.TimeInterval {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $duration: Combine.Published<Foundation.TimeInterval>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($isBuffering) public var isBuffering: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $isBuffering: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published @_projectedValueProperty($isMuted) public var isMuted: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $isMuted: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public init()
+  @_Concurrency.MainActor public func togglePlayPause()
+  @_Concurrency.MainActor public func play()
+  @_Concurrency.MainActor public func pause()
+  @_Concurrency.MainActor public func seekTo(time: Foundation.TimeInterval)
+  @_Concurrency.MainActor public func mute()
+  @_Concurrency.MainActor public func unmute()
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class Spalla : @unchecked Swift.Sendable {
+  public static let shared: SpallaSDK.Spalla
+  final public func initialize(token: Swift.String, applicationId: Swift.String?, isDevMode: Swift.Bool = false)
+  final public func setSessionId(token: Swift.String)
+  final public func getSessionId() -> Swift.String?
+  @objc deinit
+}
+extension SpallaSDK.SpallaPlayerSwiftUI : Swift.Sendable {}
