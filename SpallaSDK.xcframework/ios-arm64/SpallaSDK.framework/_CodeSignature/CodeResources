@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		BS0PwCPfi99s++YlD9RY+wtgaRE=
+		UgQ5hlmaDwymrvsMVEH/GP8V8IU=
 		</data>
 		<key>Intro Bold Regular.ttf</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		KSW+5lLvUba2kX1ErakVJjUKbaM=
+		M3Vs5oPfI5Jj5HOPR+CyC6I0XcU=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		FPTbvc72I4uj9R3ddrv5bxcN2w4=
+		EBeg7DzoOcNDsEK/QLGH3D3PZuE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>build.sh</key>
 		<data>
-		QGv8rEe/FCAd7i413jT27AXvSok=
+		vRquuaSjmK0QORLgnkPXTOBxosM=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -104,7 +104,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			t3Z9Zv1R687fIDh2XsHFvdwXNVh24NVBEa418YynTd4=
+			1ONgbjdSVJwp8NGhMYu8ZIh9Oz7t32cZ9cwWKhq6tl4=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -132,7 +132,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xN9/OzXE2nc/8L+JIlX52bmd0t1Gx/YwlvQAsHgto8A=
+			SJHrKooWbrSoKvTr336mcHsK5hV+TRir5zOXxD5zqvA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -195,7 +195,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			VeESnuafKCxVOwlArVPlUGRozFvnOUwuI1yBh1K3tVY=
+			x9bhrOwuGpi21n/0SzM/lRAC6ory8AFjxEj9S3Fipto=
 			</data>
 		</dict>
 	</dict>

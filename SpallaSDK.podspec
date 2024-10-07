@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name          = 'SpallaSDK'
-    s.version       = '0.7.1'
+    s.version       = '0.7.2'
     s.summary       = 'Spalla Player with Analytics'
     s.homepage      = 'https://github.com/taghos/framework-sdk-spalla-iOS'
     s.license       = { :type => 'MIT' }
