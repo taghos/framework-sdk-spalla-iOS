@@ -9,3 +9,7 @@
 .vjs-icon-picture-in-picture-enter {
     display: none !important
 }
+
+.theo-chromecast-button {
+    display: none !important;
+}
