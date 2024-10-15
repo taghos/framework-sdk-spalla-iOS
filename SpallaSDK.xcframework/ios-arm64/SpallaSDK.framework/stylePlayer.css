@@ -1,0 +1,11 @@
+.theo-primary-color, .vjs-selected {
+    color: #ffffff !important;
+  }
+  
+.vjs-fullscreen-control {
+      display: none !important;
+  }
+
+.vjs-icon-picture-in-picture-enter {
+    display: none !important
+}
