@@ -633,7 +633,7 @@
           {
             "kind": "Function",
             "name": "setup",
-            "printedName": "setup(with:isLive:hideUI:)",
+            "printedName": "setup(with:isLive:hideUI:startTime:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -658,11 +658,18 @@
                 "printedName": "Swift.Bool",
                 "hasDefaultArg": true,
                 "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "hasDefaultArg": true,
+                "usr": "s:Sd"
               }
             ],
             "declKind": "Func",
-            "usr": "s:9SpallaSDK0A20PlayerViewControllerC5setup4with6isLive6hideUIySS_S2btF",
-            "mangledName": "$s9SpallaSDK0A20PlayerViewControllerC5setup4with6isLive6hideUIySS_S2btF",
+            "usr": "s:9SpallaSDK0A20PlayerViewControllerC5setup4with6isLive6hideUI9startTimeySS_S2bSdtF",
+            "mangledName": "$s9SpallaSDK0A20PlayerViewControllerC5setup4with6isLive6hideUI9startTimeySS_S2bSdtF",
             "moduleName": "SpallaSDK",
             "declAttributes": [
               "Preconcurrency",
@@ -1011,6 +1018,46 @@
             "declKind": "Func",
             "usr": "s:9SpallaSDK0A20PlayerViewControllerC6unmuteyyF",
             "mangledName": "$s9SpallaSDK0A20PlayerViewControllerC6unmuteyyF",
+            "moduleName": "SpallaSDK",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getCurrentTime",
+            "printedName": "getCurrentTime(callback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Double) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9SpallaSDK0A20PlayerViewControllerC14getCurrentTime8callbackyySdc_tF",
+            "mangledName": "$s9SpallaSDK0A20PlayerViewControllerC14getCurrentTime8callbackyySdc_tF",
             "moduleName": "SpallaSDK",
             "declAttributes": [
               "Preconcurrency",
@@ -1399,7 +1446,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(contentId:isLive:hideUI:controller:)",
+            "printedName": "init(contentId:isLive:hideUI:startTime:controller:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1436,6 +1483,13 @@
               },
               {
                 "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "hasDefaultArg": true,
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
                 "name": "Optional",
                 "printedName": "SpallaSDK.PlayerController?",
                 "children": [
@@ -1450,8 +1504,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:9SpallaSDK0A13PlayerSwiftUIV9contentId6isLive04hideE010controllerACSSSg_S2bAA0C10ControllerCSgtcfc",
-            "mangledName": "$s9SpallaSDK0A13PlayerSwiftUIV9contentId6isLive04hideE010controllerACSSSg_S2bAA0C10ControllerCSgtcfc",
+            "usr": "s:9SpallaSDK0A13PlayerSwiftUIV9contentId6isLive04hideE09startTime10controllerACSSSg_S2bSdAA0C10ControllerCSgtcfc",
+            "mangledName": "$s9SpallaSDK0A13PlayerSwiftUIV9contentId6isLive04hideE09startTime10controllerACSSSg_S2bSdAA0C10ControllerCSgtcfc",
             "moduleName": "SpallaSDK",
             "declAttributes": [
               "Preconcurrency",
@@ -3347,218 +3401,232 @@
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "StringLiteral",
+      "offset": 855,
+      "length": 9,
+      "value": "\"canPlay\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 1235,
+      "offset": 1264,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 1391,
+      "offset": 1420,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 1519,
+      "offset": 1548,
       "length": 18,
       "value": "\"V:|-0-[view]-0-|\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "Array",
-      "offset": 1548,
+      "offset": 1577,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 1574,
+      "offset": 1603,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 1677,
+      "offset": 1706,
       "length": 18,
       "value": "\"H:|-0-[view]-0-|\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "Array",
-      "offset": 1706,
+      "offset": 1735,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 1732,
+      "offset": 1761,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 1810,
+      "offset": 1839,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "Dictionary",
-      "offset": 2000,
+      "offset": 2029,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2027,
+      "offset": 2056,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2092,
+      "offset": 2121,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2229,
+      "offset": 2161,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2195,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2237,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2235,
+      "offset": 2370,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2245,
+      "offset": 2376,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2386,
       "length": 3,
       "value": "100"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2258,
+      "offset": 2399,
       "length": 2,
       "value": "25"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2341,
+      "offset": 2482,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2404,
+      "offset": 2545,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2511,
+      "offset": 2652,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2517,
+      "offset": 2658,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2527,
+      "offset": 2668,
       "length": 3,
       "value": "100"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2540,
+      "offset": 2681,
       "length": 2,
       "value": "25"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 2570,
+      "offset": 2711,
       "length": 6,
       "value": "\"Live\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2706,
+      "offset": 2847,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2827,
+      "offset": 2968,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 2990,
+      "offset": 3131,
       "length": 18,
       "value": "\"H:|-0-[view]-0-|\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3032,
+      "offset": 3173,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3134,
+      "offset": 3275,
       "length": 18,
       "value": "\"V:|-0-[view]-0-|\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3176,
-      "length": 6,
-      "value": "\"view\""
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "StringLiteral",
-      "offset": 3288,
-      "length": 15,
-      "value": "\"H:|-16-[view]\""
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "StringLiteral",
-      "offset": 3327,
+      "offset": 3317,
       "length": 6,
       "value": "\"view\""
     },
@@ -3567,7 +3635,7 @@
       "kind": "StringLiteral",
       "offset": 3429,
       "length": 15,
-      "value": "\"V:|-16-[view]\""
+      "value": "\"H:|-16-[view]\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
@@ -3578,141 +3646,169 @@
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3629,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3635,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3645,
-      "length": 3,
-      "value": "200"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3658,
-      "length": 2,
-      "value": "20"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3793,
-      "length": 2,
-      "value": "18"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "FloatLiteral",
-      "offset": 3850,
-      "length": 3,
-      "value": "0.7"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 3901,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 3978,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 4102,
-      "length": 24,
-      "value": "\"H:[liveView]-16-[view]\""
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "StringLiteral",
-      "offset": 4150,
-      "length": 6,
-      "value": "\"view\""
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "StringLiteral",
-      "offset": 4170,
-      "length": 10,
-      "value": "\"liveView\""
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "StringLiteral",
-      "offset": 4276,
+      "offset": 3570,
       "length": 15,
       "value": "\"V:|-16-[view]\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 4315,
+      "offset": 3609,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 4460,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 19820,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 22163,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 22223,
+      "offset": 3770,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 22276,
+      "offset": 3776,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3786,
+      "length": 3,
+      "value": "200"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3799,
+      "length": 2,
+      "value": "20"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3934,
+      "length": 2,
+      "value": "18"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "FloatLiteral",
+      "offset": 3991,
+      "length": 3,
+      "value": "0.7"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 22324,
+      "offset": 4042,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 22371,
+      "offset": 4119,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "StringLiteral",
+      "offset": 4243,
+      "length": 24,
+      "value": "\"H:[liveView]-16-[view]\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "StringLiteral",
+      "offset": 4291,
+      "length": 6,
+      "value": "\"view\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "StringLiteral",
+      "offset": 4311,
+      "length": 10,
+      "value": "\"liveView\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "StringLiteral",
+      "offset": 4417,
+      "length": 15,
+      "value": "\"V:|-16-[view]\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "StringLiteral",
+      "offset": 4456,
+      "length": 6,
+      "value": "\"view\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4601,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4628,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 20882,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 20909,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 23305,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 23365,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 23418,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 23466,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 23513,
       "length": 5,
       "value": "false"
     },
