@@ -16,6 +16,16 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "THEOplayerSDK",
         "printedName": "THEOplayerSDK",
         "declKind": "Import",
@@ -57,6 +67,16 @@
         "printedName": "UIKit",
         "declKind": "Import",
         "moduleName": "SpallaSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
       },
       {
         "kind": "Import",
@@ -542,6 +562,136 @@
             "usr": "s:9SpallaSDK0A11PlayerEventO7unmutedyA2CmF",
             "mangledName": "$s9SpallaSDK0A11PlayerEventO7unmutedyA2CmF",
             "moduleName": "SpallaSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "subtitlesAvailable",
+            "printedName": "subtitlesAvailable",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(SpallaSDK.SpallaPlayerEvent.Type) -> ([Swift.String]) -> SpallaSDK.SpallaPlayerEvent",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([Swift.String]) -> SpallaSDK.SpallaPlayerEvent",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SpallaPlayerEvent",
+                        "printedName": "SpallaSDK.SpallaPlayerEvent",
+                        "usr": "s:9SpallaSDK0A11PlayerEventO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(subtitles: [Swift.String])",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[Swift.String]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "SpallaSDK.SpallaPlayerEvent.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SpallaPlayerEvent",
+                        "printedName": "SpallaSDK.SpallaPlayerEvent",
+                        "usr": "s:9SpallaSDK0A11PlayerEventO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9SpallaSDK0A11PlayerEventO18subtitlesAvailableyACSaySSG_tcACmF",
+            "mangledName": "$s9SpallaSDK0A11PlayerEventO18subtitlesAvailableyACSaySSG_tcACmF",
+            "moduleName": "SpallaSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "subtitleSelected",
+            "printedName": "subtitleSelected",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(SpallaSDK.SpallaPlayerEvent.Type) -> (Swift.String?) -> SpallaSDK.SpallaPlayerEvent",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String?) -> SpallaSDK.SpallaPlayerEvent",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SpallaPlayerEvent",
+                        "printedName": "SpallaSDK.SpallaPlayerEvent",
+                        "usr": "s:9SpallaSDK0A11PlayerEventO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(subtitle: Swift.String?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "SpallaSDK.SpallaPlayerEvent.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SpallaPlayerEvent",
+                        "printedName": "SpallaSDK.SpallaPlayerEvent",
+                        "usr": "s:9SpallaSDK0A11PlayerEventO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9SpallaSDK0A11PlayerEventO16subtitleSelectedyACSSSg_tcACmF",
+            "mangledName": "$s9SpallaSDK0A11PlayerEventO16subtitleSelectedyACSSSg_tcACmF",
+            "moduleName": "SpallaSDK"
           }
         ],
         "declKind": "Enum",
@@ -633,7 +783,7 @@
           {
             "kind": "Function",
             "name": "setup",
-            "printedName": "setup(with:isLive:hideUI:startTime:)",
+            "printedName": "setup(with:isLive:hideUI:startTime:subtitle:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -665,11 +815,62 @@
                 "printedName": "Swift.Double",
                 "hasDefaultArg": true,
                 "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:9SpallaSDK0A20PlayerViewControllerC5setup4with6isLive6hideUI9startTimeySS_S2bSdtF",
-            "mangledName": "$s9SpallaSDK0A20PlayerViewControllerC5setup4with6isLive6hideUI9startTimeySS_S2bSdtF",
+            "usr": "s:9SpallaSDK0A20PlayerViewControllerC5setup4with6isLive6hideUI9startTime8subtitleySS_S2bSdSSSgtF",
+            "mangledName": "$s9SpallaSDK0A20PlayerViewControllerC5setup4with6isLive6hideUI9startTime8subtitleySS_S2bSdSSSgtF",
+            "moduleName": "SpallaSDK",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "selectSubtitle",
+            "printedName": "selectSubtitle(subtitle:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9SpallaSDK0A20PlayerViewControllerC14selectSubtitle8subtitleySSSg_tF",
+            "mangledName": "$s9SpallaSDK0A20PlayerViewControllerC14selectSubtitle8subtitleySSSg_tF",
             "moduleName": "SpallaSDK",
             "declAttributes": [
               "Preconcurrency",
@@ -1446,7 +1647,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(contentId:isLive:hideUI:startTime:controller:)",
+            "printedName": "init(contentId:isLive:hideUI:startTime:subtitle:controller:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1491,6 +1692,21 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
                 "printedName": "SpallaSDK.PlayerController?",
                 "children": [
                   {
@@ -1504,8 +1720,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:9SpallaSDK0A13PlayerSwiftUIV9contentId6isLive04hideE09startTime10controllerACSSSg_S2bSdAA0C10ControllerCSgtcfc",
-            "mangledName": "$s9SpallaSDK0A13PlayerSwiftUIV9contentId6isLive04hideE09startTime10controllerACSSSg_S2bSdAA0C10ControllerCSgtcfc",
+            "usr": "s:9SpallaSDK0A13PlayerSwiftUIV9contentId6isLive04hideE09startTime8subtitle10controllerACSSSg_S2bSdAjA0C10ControllerCSgtcfc",
+            "mangledName": "$s9SpallaSDK0A13PlayerSwiftUIV9contentId6isLive04hideE09startTime8subtitle10controllerACSSSg_S2bSdAjA0C10ControllerCSgtcfc",
             "moduleName": "SpallaSDK",
             "declAttributes": [
               "Preconcurrency",
@@ -2842,6 +3058,466 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "subtitle",
+            "printedName": "subtitle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9SpallaSDK16PlayerControllerC8subtitleSSSgvp",
+            "mangledName": "$s9SpallaSDK16PlayerControllerC8subtitleSSSgvp",
+            "moduleName": "SpallaSDK",
+            "declAttributes": [
+              "ProjectedValueProperty",
+              "AccessControl",
+              "Custom"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC8subtitleSSSgvg",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC8subtitleSSSgvg",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC8subtitleSSSgvs",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC8subtitleSSSgvs",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "intro_Macosx": "10.15",
+                "intro_iOS": "13.0",
+                "intro_tvOS": "13.0",
+                "intro_watchOS": "6.0",
+                "declAttributes": [
+                  "Available",
+                  "Available",
+                  "Available",
+                  "Available"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC8subtitleSSSgvM",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC8subtitleSSSgvM",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "intro_Macosx": "10.15",
+                "intro_iOS": "13.0",
+                "intro_tvOS": "13.0",
+                "intro_watchOS": "6.0",
+                "declAttributes": [
+                  "Available",
+                  "Available",
+                  "Available",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "$subtitle",
+            "printedName": "$subtitle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Publisher",
+                "printedName": "Combine.Published<Swift.Optional<Swift.String>>.Publisher",
+                "usr": "s:7Combine9PublishedV9PublisherV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9SpallaSDK16PlayerControllerC9$subtitle7Combine9PublishedV9PublisherVySSSg_Gvp",
+            "mangledName": "$s9SpallaSDK16PlayerControllerC9$subtitle7Combine9PublishedV9PublisherVySSSg_Gvp",
+            "moduleName": "SpallaSDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Publisher",
+                    "printedName": "Combine.Published<Swift.Optional<Swift.String>>.Publisher",
+                    "usr": "s:7Combine9PublishedV9PublisherV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC9$subtitle7Combine9PublishedV9PublisherVySSSg_Gvg",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC9$subtitle7Combine9PublishedV9PublisherVySSSg_Gvg",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Publisher",
+                    "printedName": "Combine.Published<Swift.Optional<Swift.String>>.Publisher",
+                    "usr": "s:7Combine9PublishedV9PublisherV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC9$subtitle7Combine9PublishedV9PublisherVySSSg_Gvs",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC9$subtitle7Combine9PublishedV9PublisherVySSSg_Gvs",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "intro_Macosx": "11.0",
+                "intro_iOS": "14.0",
+                "intro_tvOS": "14.0",
+                "intro_watchOS": "7.0",
+                "declAttributes": [
+                  "Available",
+                  "Available",
+                  "Available",
+                  "Available"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC9$subtitle7Combine9PublishedV9PublisherVySSSg_GvM",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC9$subtitle7Combine9PublishedV9PublisherVySSSg_GvM",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "intro_Macosx": "11.0",
+                "intro_iOS": "14.0",
+                "intro_tvOS": "14.0",
+                "intro_watchOS": "7.0",
+                "declAttributes": [
+                  "Available",
+                  "Available",
+                  "Available",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "availableSubtitles",
+            "printedName": "availableSubtitles",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9SpallaSDK16PlayerControllerC18availableSubtitlesSaySSGvp",
+            "mangledName": "$s9SpallaSDK16PlayerControllerC18availableSubtitlesSaySSGvp",
+            "moduleName": "SpallaSDK",
+            "declAttributes": [
+              "ProjectedValueProperty",
+              "AccessControl",
+              "Custom"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC18availableSubtitlesSaySSGvg",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC18availableSubtitlesSaySSGvg",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC18availableSubtitlesSaySSGvs",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC18availableSubtitlesSaySSGvs",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "intro_Macosx": "10.15",
+                "intro_iOS": "13.0",
+                "intro_tvOS": "13.0",
+                "intro_watchOS": "6.0",
+                "declAttributes": [
+                  "Available",
+                  "Available",
+                  "Available",
+                  "Available"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC18availableSubtitlesSaySSGvM",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC18availableSubtitlesSaySSGvM",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "intro_Macosx": "10.15",
+                "intro_iOS": "13.0",
+                "intro_tvOS": "13.0",
+                "intro_watchOS": "6.0",
+                "declAttributes": [
+                  "Available",
+                  "Available",
+                  "Available",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "$availableSubtitles",
+            "printedName": "$availableSubtitles",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Publisher",
+                "printedName": "Combine.Published<Swift.Array<Swift.String>>.Publisher",
+                "usr": "s:7Combine9PublishedV9PublisherV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9SpallaSDK16PlayerControllerC19$availableSubtitles7Combine9PublishedV9PublisherVySaySSG_Gvp",
+            "mangledName": "$s9SpallaSDK16PlayerControllerC19$availableSubtitles7Combine9PublishedV9PublisherVySaySSG_Gvp",
+            "moduleName": "SpallaSDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Publisher",
+                    "printedName": "Combine.Published<Swift.Array<Swift.String>>.Publisher",
+                    "usr": "s:7Combine9PublishedV9PublisherV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC19$availableSubtitles7Combine9PublishedV9PublisherVySaySSG_Gvg",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC19$availableSubtitles7Combine9PublishedV9PublisherVySaySSG_Gvg",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Publisher",
+                    "printedName": "Combine.Published<Swift.Array<Swift.String>>.Publisher",
+                    "usr": "s:7Combine9PublishedV9PublisherV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC19$availableSubtitles7Combine9PublishedV9PublisherVySaySSG_Gvs",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC19$availableSubtitles7Combine9PublishedV9PublisherVySaySSG_Gvs",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "intro_Macosx": "11.0",
+                "intro_iOS": "14.0",
+                "intro_tvOS": "14.0",
+                "intro_watchOS": "7.0",
+                "declAttributes": [
+                  "Available",
+                  "Available",
+                  "Available",
+                  "Available"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK16PlayerControllerC19$availableSubtitles7Combine9PublishedV9PublisherVySaySSG_GvM",
+                "mangledName": "$s9SpallaSDK16PlayerControllerC19$availableSubtitles7Combine9PublishedV9PublisherVySaySSG_GvM",
+                "moduleName": "SpallaSDK",
+                "implicit": true,
+                "intro_Macosx": "11.0",
+                "intro_iOS": "14.0",
+                "intro_tvOS": "14.0",
+                "intro_watchOS": "7.0",
+                "declAttributes": [
+                  "Available",
+                  "Available",
+                  "Available",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -2993,6 +3669,41 @@
               "Custom"
             ],
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "selectSubtitle",
+            "printedName": "selectSubtitle(subtitle:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9SpallaSDK16PlayerControllerC14selectSubtitle8subtitleySSSg_tF",
+            "mangledName": "$s9SpallaSDK16PlayerControllerC14selectSubtitle8subtitleySSSg_tF",
+            "moduleName": "SpallaSDK",
+            "declAttributes": [
+              "AccessControl",
+              "Custom"
+            ],
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -3039,6 +3750,16 @@
             "usr": "s:7Combine16ObservableObjectP",
             "mangledName": "$s7Combine16ObservableObjectP"
           }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
         ]
       },
       {
@@ -3282,6 +4003,33 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK"
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -3294,6 +4042,48 @@
     "json_format_version": 8
   },
   "ConstValues": [
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/API\/model\/SubtitleModel.swift",
+      "kind": "StringLiteral",
+      "offset": 347,
+      "length": 10,
+      "value": "\"video_id\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/API\/model\/SubtitleModel.swift",
+      "kind": "StringLiteral",
+      "offset": 379,
+      "length": 8,
+      "value": "\"inicio\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/API\/model\/SubtitleModel.swift",
+      "kind": "StringLiteral",
+      "offset": 407,
+      "length": 5,
+      "value": "\"fim\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/API\/model\/SubtitleModel.swift",
+      "kind": "StringLiteral",
+      "offset": 433,
+      "length": 7,
+      "value": "\"texto\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/API\/model\/SubtitleModel.swift",
+      "kind": "StringLiteral",
+      "offset": 466,
+      "length": 17,
+      "value": "\"inicio_numerico\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/API\/model\/SubtitleModel.swift",
+      "kind": "StringLiteral",
+      "offset": 507,
+      "length": 14,
+      "value": "\"fim_numerico\""
+    },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/Core\/Controller\/AnalyticsController.swift",
       "kind": "StringLiteral",
@@ -3332,490 +4122,525 @@
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/API\/SpallaAPI.swift",
       "kind": "StringLiteral",
-      "offset": 327,
+      "offset": 969,
       "length": 27,
       "value": "\"https:\/\/api.spalla.io\/v1\/\""
     },
     {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/API\/SpallaAPI.swift",
+      "kind": "StringLiteral",
+      "offset": 1031,
+      "length": 27,
+      "value": "\"https:\/\/beyond.spalla.io\/\""
+    },
+    {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 577,
+      "offset": 671,
       "length": 6,
       "value": "\"play\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 603,
+      "offset": 697,
       "length": 9,
       "value": "\"playing\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 630,
+      "offset": 724,
       "length": 7,
       "value": "\"pause\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 657,
+      "offset": 751,
       "length": 9,
       "value": "\"waiting\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 684,
+      "offset": 778,
       "length": 7,
       "value": "\"ended\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 718,
+      "offset": 812,
       "length": 16,
       "value": "\"durationUpdate\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 752,
+      "offset": 846,
       "length": 7,
       "value": "\"error\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 782,
+      "offset": 876,
       "length": 12,
       "value": "\"timeUpdate\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 820,
+      "offset": 914,
       "length": 15,
       "value": "\"volumeChanged\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 855,
+      "offset": 949,
       "length": 9,
       "value": "\"canPlay\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "StringLiteral",
+      "offset": 984,
+      "length": 15,
+      "value": "\"subtitleAdded\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1027,
+      "length": 17,
+      "value": "\"subtitleChanged\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 1264,
+      "offset": 1444,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 1420,
+      "offset": 1600,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 1548,
+      "offset": 1728,
       "length": 18,
       "value": "\"V:|-0-[view]-0-|\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "Array",
-      "offset": 1577,
+      "offset": 1757,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 1603,
+      "offset": 1783,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 1706,
+      "offset": 1886,
       "length": 18,
       "value": "\"H:|-0-[view]-0-|\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "Array",
-      "offset": 1735,
+      "offset": 1915,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 1761,
+      "offset": 1941,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 1839,
+      "offset": 2019,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "Dictionary",
-      "offset": 2029,
+      "offset": 2209,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "Dictionary",
+      "offset": 2271,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2056,
+      "offset": 2298,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2121,
+      "offset": 2363,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2161,
+      "offset": 2403,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2195,
+      "offset": 2437,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2237,
+      "offset": 2479,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2370,
+      "offset": 2728,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2376,
+      "offset": 2734,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2386,
+      "offset": 2744,
       "length": 3,
       "value": "100"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2399,
+      "offset": 2757,
       "length": 2,
       "value": "25"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2482,
+      "offset": 2840,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2545,
+      "offset": 2903,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2652,
+      "offset": 3010,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2658,
+      "offset": 3016,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2668,
+      "offset": 3026,
       "length": 3,
       "value": "100"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2681,
+      "offset": 3039,
       "length": 2,
       "value": "25"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 2711,
+      "offset": 3069,
       "length": 6,
       "value": "\"Live\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 2847,
+      "offset": 3205,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 2968,
+      "offset": 3326,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3131,
+      "offset": 3489,
       "length": 18,
       "value": "\"H:|-0-[view]-0-|\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3173,
+      "offset": 3531,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3275,
+      "offset": 3633,
       "length": 18,
       "value": "\"V:|-0-[view]-0-|\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3317,
+      "offset": 3675,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3429,
+      "offset": 3787,
       "length": 15,
       "value": "\"H:|-16-[view]\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3468,
+      "offset": 3826,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3570,
+      "offset": 3928,
       "length": 15,
       "value": "\"V:|-16-[view]\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 3609,
+      "offset": 3967,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 3770,
+      "offset": 4128,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 3776,
+      "offset": 4134,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 3786,
+      "offset": 4144,
       "length": 3,
       "value": "200"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 3799,
+      "offset": 4157,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 3934,
+      "offset": 4292,
       "length": 2,
       "value": "18"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "FloatLiteral",
-      "offset": 3991,
+      "offset": 4349,
       "length": 3,
       "value": "0.7"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 4042,
+      "offset": 4400,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 4119,
+      "offset": 4477,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 4243,
+      "offset": 4601,
       "length": 24,
       "value": "\"H:[liveView]-16-[view]\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 4291,
+      "offset": 4649,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 4311,
+      "offset": 4669,
       "length": 10,
       "value": "\"liveView\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 4417,
+      "offset": 4775,
       "length": 15,
       "value": "\"V:|-16-[view]\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "StringLiteral",
-      "offset": 4456,
+      "offset": 4814,
       "length": 6,
       "value": "\"view\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 4601,
+      "offset": 4959,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 4628,
+      "offset": 4986,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 20882,
+      "offset": 25939,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 20909,
+      "offset": 25966,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 23305,
+      "offset": 28650,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 23365,
+      "offset": 28710,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "IntegerLiteral",
-      "offset": 23418,
+      "offset": 28763,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 23466,
+      "offset": 28811,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
       "kind": "BooleanLiteral",
-      "offset": 23513,
+      "offset": 28858,
       "length": 5,
       "value": "false"
     },
     {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/UI\/SpallaPlayer.swift",
+      "kind": "Array",
+      "offset": 28971,
+      "length": 2,
+      "value": "[]"
+    },
+    {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/Spalla.swift",
       "kind": "BooleanLiteral",
-      "offset": 521,
+      "offset": 533,
       "length": 5,
       "value": "false"
     },
@@ -3825,6 +4650,13 @@
       "offset": 166,
       "length": 30,
       "value": "\"https:\/\/infinity.spalla.io\/e\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/Util\/NetworkInterceptor.swift",
+      "kind": "StringLiteral",
+      "offset": 223,
+      "length": 27,
+      "value": "\"NetworkInterceptorHandled\""
     }
   ]
 }

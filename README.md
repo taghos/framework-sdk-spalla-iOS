@@ -25,7 +25,7 @@ Once you have your Swift package set up, adding SpallaSDK as a dependency is as 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "0.6.1"))
+    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "0.9.0"))
 ]
 ```
 
@@ -56,12 +56,27 @@ The ViewController also exposes some player functions, like `play`, `pause`, `mu
 
 The player will dispatch some key events while it's playing any content. The view controller has a method `registerPlayerListener` that subscribes a listener to receive events. The listener must conform to `SpallaPlayerListener` protocol, which has only a single method `onEvent`
 
+| Event    | Parameters | Description |
+| -------- | ------- | ------- |
+| play | | User requested to play after pause or after initial load
+| playing | | Video is actually playing or back to playing after buffer
+| pause | | User requested a pause
+| waiting | | video is being buffered
+| ended | | video reached end time
+| durationUpdate | time: TimeInterval | | the video duration updated. Usually only sent once after initial metadata is loaded
+| error | error: String, canRetry: Bool | | sent when the video has any error, and if the error can be retried (like connection errors)
+| timeUpdate | time: TimeInterval | the current time of the video
+| muted | | when video is muted
+| unmuted | | when video is unmuted
+| subtitlesAvailable | subtitles: [String] | after initial load, event is dispatched with the available languages available, like ["pt-br", "en"]
+| subtitleSelected | subtitle: String? | a subtitle is selected (also happens if a subtitle is set on setup)
+
 ### SwiftUI
 
 We have a Player view that encapsulates the same view controller that is used on UIKit. Just add it to your swift code as this
 
 ```swift
-SpallaPlayerSwiftUI(contentId: contentId, isLive: isLive, controller: nil)
+SpallaPlayerSwiftUI(contentId: contentId, isLive: isLive, startTime: 0, subtitle: nil, controller: nil)
 ```
 
 If you need to control the player from outside, pass a `PlayerController` to the view.
@@ -117,7 +132,7 @@ vc.setup(with: "{Spalla content_id}", isLive: false, hideUI: true)
 ### SwiftUI
 
 ```
-SpallaPlayerSwiftUI(contentId: contentId, isLive: false, hideUI: true, controller: playerController)
+SpallaPlayerSwiftUI(contentId: contentId, isLive: false, hideUI: true, startTime: 0, subtitle: nil, controller: playerController)
 ```
 
 # Analytics

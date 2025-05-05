@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/SpallaSDK-Swift.h</key>
 		<data>
-		FiY8RLn+yhlDdDzD/Ftvs2oih6c=
+		OHWXT8ctreIscHv52e1J7SStZC8=
 		</data>
 		<key>Headers/SpallaSDK.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		IPWLIFaAk52/ylNiNnFHsZhqWp0=
+		rD4rk4jm+R2whKmK5CuLEndPhhc=
 		</data>
 		<key>Intro Bold Regular.ttf</key>
 		<data>
@@ -22,43 +22,43 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		Yw1Sx/id5f6SHQpr4wCtta7tZb8=
+		0/1uOE6MpmkeSsHcSQJcZu9jAAo=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		Phdz/uWWN/DNRn8S3Xc+4su7xjo=
+		X+myOWUCLbYEyDIhRPGhGw1J+PI=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		yBm6b/NFf4rmvJ8piOPpsII1DsQ=
+		aJCrJJMK08665MXn7qDnNhChtDU=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		Phdz/uWWN/DNRn8S3Xc+4su7xjo=
+		X+myOWUCLbYEyDIhRPGhGw1J+PI=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		MUyqzumqFk6rUNS4HmE+ikpm/hs=
+		tPdnwQLHV4Tu9tp+ZKTaCH+/jgI=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Yw1Sx/id5f6SHQpr4wCtta7tZb8=
+		0/1uOE6MpmkeSsHcSQJcZu9jAAo=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		Sqeevnfm+TW92dwwr2nZiMNZL7c=
+		tQh2ZsVJeoekss7b2Qoh4/GmyEM=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		AfCcfrxINR6SAPPl0kZcmOPR/t8=
+		JBVJa68ygIcDh/bZ/I6y46iKRB0=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		Sqeevnfm+TW92dwwr2nZiMNZL7c=
+		tQh2ZsVJeoekss7b2Qoh4/GmyEM=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		f4CDX1Oj/YeDQe92pQOfpJQEERc=
+		JcFYWCXCvOiDJ1VhPj+Ja98wDgQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -103,7 +103,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SbafJuqsKyyyKQcVduTcdZOwtAnNFjzOD446u0/KG7E=
+			glhJsp047VTExZJ4UrVLQzgKAHyILEvQs//OBjU5d/A=
 			</data>
 		</dict>
 		<key>Headers/SpallaSDK.h</key>
@@ -124,70 +124,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lRVtapqN4H2dy3tZSqpohjmCaMgS2IOOyct8z0aSIcE=
+			Mribe97mTZJlShYYtMqWY0JpHLuGMCXp8PKuj5bYVZI=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CCoE2Pakr7AddiR1XZq6NQJAqcurbGBH7Kr+MPmpba0=
+			O30KX4PaRSxufLfTSq3MPWOshGUO50xsbQ49WYkQolk=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5pRC5KdX+MfIxmmhXuAoEHS4HqDn8i1/2zOy1qE+eKI=
+			O8XxKSggbbgblBZUXIxUGQD3QoTA/54fudJZrbEk0XE=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CCoE2Pakr7AddiR1XZq6NQJAqcurbGBH7Kr+MPmpba0=
+			O30KX4PaRSxufLfTSq3MPWOshGUO50xsbQ49WYkQolk=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sdKGvfdynryipe0NtGJ8v2g8GeUjHxxoMansiMEJrH0=
+			IdCUGn3GZsNT4LnoVvh1RaoZjMIbVPlLjjOFe7mJtew=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lRVtapqN4H2dy3tZSqpohjmCaMgS2IOOyct8z0aSIcE=
+			Mribe97mTZJlShYYtMqWY0JpHLuGMCXp8PKuj5bYVZI=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WLi90AlkBi8XoPptef+gCDyzhPyp1+E+0cZq9fcfPoQ=
+			t/GrIsXgvUh65ert68Pqrlr4ASsqYnC0Hh4NKairxFo=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			T3IwKRI05xzMKwyTLrK8INmQpfed+1DJqvVSuV20444=
+			F9ggrjBqN8w+hyKRDslyQXAnGikvMOfkfWsio4u2QWI=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WLi90AlkBi8XoPptef+gCDyzhPyp1+E+0cZq9fcfPoQ=
+			t/GrIsXgvUh65ert68Pqrlr4ASsqYnC0Hh4NKairxFo=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VAFdmVauMO4gb6+vDMjEJng/HWwcd3zlQGDg4J5ZzqM=
+			yYzhjniJJ7YCxrYxJN2ZbzujT3tQeMV/G/u5qwQ/s1w=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
