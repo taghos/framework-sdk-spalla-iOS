@@ -38,7 +38,7 @@ Download the latest release from [Github](https://github.com/taghos/framework-sd
 At app start, call the initializer. Pass your Chromecast receiver app id if you have one, otherwise just send nil.
 
 ```swift
-Spalla.shared.initialize(applicationId: "{Chromecast application id}")
+Spalla.shared.initialize(token: "{Spalla token}" applicationId: "{Chromecast application id}")
 ```
 
 ### UIKit
@@ -50,7 +50,7 @@ vc.setup(with: "{Spalla content_id}", isLive: false)
 self.navigationController?.pushViewController(vc, animated: true)
 ```
 
-The ViewController also exposes some player functions, like `play`, `pause`, `mute`, `unmute` and `seekTo`.
+The ViewController also exposes some player functions, like `play`, `pause`, `mute`, `unmute`, `seekTo` and `selectSubtitle`.
 
 #### UIKit Events
 
@@ -126,7 +126,7 @@ If you want, you may initialize the player with a hideUI option and implements t
 ### UIKit:
 
 ```
-vc.setup(with: "{Spalla content_id}", isLive: false, hideUI: true)
+vc.setup(with: "{Spalla content_id}", isLive: false, hideUI: true, startTime: 0, subtitle: nil)
 ```
 
 ### SwiftUI
@@ -153,3 +153,6 @@ This will enable all analytics on the Spalla Player automatically. No Analytics 
 
 - Video is not playing on landscape
 -- The UIKit view controller will return landscape as the allowed orientation. Make sure that your app allows that orientation on both AppDelegate and in the project. 
+
+- App crashes on the simulator
+-- the current version of THEO Player that is being used does not work on arm64 simulators. Unfortunatelly you can only test on physical devices until we update to a newer version.
