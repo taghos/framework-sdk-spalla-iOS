@@ -24,4 +24,8 @@ videojs.addLanguage("pt-BR",{
  "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "A execução foi interrompida por um problema com o vídeo ou por seu navegador não dar suporte ao seu formato.",
  "No compatible source was found for this media.": "Não foi encontrada fonte de vídeo compatível.",
  "Something went wrong while trying to play the content": "Ocorreu um erro ao tentar reproduzir o conteúdo selecionado"
+ "Quality": "Qualidade",
+ "Speed": "Velocidade",
 });
+
+videojs.language("pt-BR");
