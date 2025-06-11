@@ -14,6 +14,8 @@ import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 public struct VideoMetadata {
+  public let isLive: Swift.Bool
+  public let duration: Foundation.TimeInterval
 }
 public enum SpallaPlayerEvent {
   case metadataLoaded(metadata: SpallaSDK.VideoMetadata)
