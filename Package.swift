@@ -11,15 +11,18 @@ let package = Package(
             targets: ["SpallaSDK", "SpallaFramework"])
     ],
     dependencies: [
-        .package(url: "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-ios.git", .upToNextMajor(from: "3.23.0")),
+        // THEOplayer SDK dependency
+        .package(url: "https://github.com/THEOplayer/theoplayer-sdk-apple.git", .upToNextMajor(from: "9.5.1")),
+        // Google Cast SDK dependency
+        .package(url: "https://github.com/SRGSSR/google-cast-sdk.git", .upToNextMajor(from: "4.8.3"))
     ],
     targets: [
         .target(
             name: "SpallaSDK",
             dependencies: [
-                .product(name: "GoogleInteractiveMediaAds", package: "swift-package-manager-google-interactive-media-ads-ios"),
-                "TheoSDK",
-                "GoogleCast"
+                .product(name: "THEOplayerSDK", package: "theoplayer-sdk-apple"),
+                .product(name: "THEOplayerGoogleCastIntegration", package: "theoplayer-sdk-apple"),
+                .product(name: "GoogleCast", package: "google-cast-sdk")
             ],
             path: "Sources"
             
@@ -28,13 +31,5 @@ let package = Package(
           name: "SpallaFramework",
           path: "SpallaSDK.xcframework"
         ),
-        .binaryTarget(
-            name: "TheoSDK",
-            path: "THEOplayerSDK.xcframework"
-        ),
-        .binaryTarget(
-            name: "GoogleCast",
-            path: "GoogleCast.xcframework"
-        )
     ]
 )

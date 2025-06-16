@@ -46,7 +46,7 @@ Spalla.shared.initialize(token: "{Spalla token}" applicationId: "{Chromecast app
 SpallaSDK comes with a custom view controller that can be used to play any Spalla content. 
 ```swift
 let vc = SpallaPlayerViewController()
-vc.setup(with: "{Spalla content_id}", isLive: false)
+vc.setup(with: "{Spalla content_id}")
 self.navigationController?.pushViewController(vc, animated: true)
 ```
 
@@ -76,7 +76,7 @@ The player will dispatch some key events while it's playing any content. The vie
 We have a Player view that encapsulates the same view controller that is used on UIKit. Just add it to your swift code as this
 
 ```swift
-SpallaPlayerSwiftUI(contentId: contentId, isLive: isLive, startTime: 0, subtitle: nil, controller: nil)
+SpallaPlayerSwiftUI(contentId: contentId, startTime: 0, subtitle: nil, controller: nil)
 ```
 
 If you need to control the player from outside, pass a `PlayerController` to the view.
@@ -86,7 +86,7 @@ If you need to control the player from outside, pass a `PlayerController` to the
 
 var body: some View {
     VStack {
-        SpallaPlayerSwiftUI(contentId: contentId, isLive: isLive, controller: playerController)
+        SpallaPlayerSwiftUI(contentId: contentId, controller: playerController)
     }
 }
 
@@ -103,7 +103,7 @@ For example, you can add a label to display the current time and a play/pause bu
     var body: some View {
         VStack {
             
-            SpallaPlayerSwiftUI(contentId: contentId, isLive: false, controller: playerController)
+            SpallaPlayerSwiftUI(contentId: contentId, controller: playerController)
             Button(playerController.isPlaying ? "Pause" : "Play", action: {
                 playerController.togglePlayPause()
             })
@@ -126,13 +126,13 @@ If you want, you may initialize the player with a hideUI option and implements t
 ### UIKit:
 
 ```
-vc.setup(with: "{Spalla content_id}", isLive: false, hideUI: true, startTime: 0, subtitle: nil)
+vc.setup(with: "{Spalla content_id}", hideUI: true, startTime: 0, subtitle: nil)
 ```
 
 ### SwiftUI
 
 ```
-SpallaPlayerSwiftUI(contentId: contentId, isLive: false, hideUI: true, startTime: 0, subtitle: nil, controller: playerController)
+SpallaPlayerSwiftUI(contentId: contentId, hideUI: true, startTime: 0, subtitle: nil, controller: playerController)
 ```
 
 # Analytics
