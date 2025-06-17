@@ -14,9 +14,7 @@ let package = Package(
             targets: ["SpallaSDK", "SpallaFramework"])
     ],
     dependencies: [
-        // THEOplayer SDK dependency
         .package(url: "https://github.com/THEOplayer/theoplayer-sdk-apple.git", .upToNextMajor(from: "9.5.1")),
-        // Google Cast SDK dependency
         .package(url: "https://github.com/SRGSSR/google-cast-sdk.git", .upToNextMajor(from: "4.8.3"))
     ],
     targets: [
