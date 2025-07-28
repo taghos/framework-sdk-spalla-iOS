@@ -6,8 +6,7 @@ Spalla SDK contains a player solution that can automatically handle any content 
 
 ### Pre-requisites
 
-SpallaSDK requires iOS 14. If you need to support a lower version, please contact us. It's on the road map to separate SwiftUI from UIKit so it's possible to prioritize it if needed.
-
+SpallaSDK requires iOS 14. 
 
 ### Cocoapods
 
@@ -25,7 +24,7 @@ Once you have your Swift package set up, adding SpallaSDK as a dependency is as 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "2.0.2"))
+    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "2.1.0"))
 ]
 ```
 
@@ -155,4 +154,7 @@ This will enable all analytics on the Spalla Player automatically. No Analytics 
 -- The UIKit view controller will return landscape as the allowed orientation. Make sure that your app allows that orientation on both AppDelegate and in the project. 
 
 - App crashes on the simulator
--- the current version of THEO Player that is being used does not work on arm64 simulators. Unfortunatelly you can only test on physical devices until we update to a newer version.
+-- support for iOS simulators on ARM64 were only added after version 2.0. You can either upgrade, or test on a physical device. 
+
+- Subtitles are not working
+-- subtitle support is still missing from 2.+ versions. Please use 1.X versions if you need it.
