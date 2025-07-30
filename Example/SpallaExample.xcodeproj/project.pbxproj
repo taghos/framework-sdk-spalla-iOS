@@ -114,7 +114,7 @@
 			mainGroup = 53FD79BC2E00CB81008BCFC8;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				53FD79D92E00CBC8008BCFC8 /* XCRemoteSwiftPackageReference "spalla-sdk-ios" */,
+				53FD79D92E00CBC8008BCFC8 /* XCRemoteSwiftPackageReference "framework-sdk-spalla-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 53FD79C62E00CB81008BCFC8 /* Products */;
@@ -348,12 +348,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		53FD79D92E00CBC8008BCFC8 /* XCRemoteSwiftPackageReference "spalla-sdk-ios" */ = {
+		53FD79D92E00CBC8008BCFC8 /* XCRemoteSwiftPackageReference "framework-sdk-spalla-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rojas/spalla-sdk-ios";
+			repositoryURL = "https://github.com/taghos/framework-sdk-spalla-iOS";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -361,7 +361,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		53FD79DA2E00CBC8008BCFC8 /* SpallaSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 53FD79D92E00CBC8008BCFC8 /* XCRemoteSwiftPackageReference "spalla-sdk-ios" */;
+			package = 53FD79D92E00CBC8008BCFC8 /* XCRemoteSwiftPackageReference "framework-sdk-spalla-iOS" */;
 			productName = SpallaSDK;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -1,6 +1,15 @@
 {
-  "originHash" : "3cd499ecf4210ddd1b9b806acf6ba4fb9d958bbb468106756aff0df181e877ed",
+  "originHash" : "718050dadbcb40862521e9d4f6332a4d932f4c3218506184f942aef0a6bdef06",
   "pins" : [
+    {
+      "identity" : "framework-sdk-spalla-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/taghos/framework-sdk-spalla-iOS",
+      "state" : {
+        "revision" : "e6382705c8040ce6df0491c1c8b59a56236b7d3b",
+        "version" : "2.1.1"
+      }
+    },
     {
       "identity" : "google-cast-sdk",
       "kind" : "remoteSourceControl",
@@ -11,21 +20,12 @@
       }
     },
     {
-      "identity" : "spalla-sdk-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/rojas/spalla-sdk-ios",
-      "state" : {
-        "revision" : "ebf36af99cc17c19150d31875b87865948962a30",
-        "version" : "2.0.1"
-      }
-    },
-    {
       "identity" : "theoplayer-sdk-apple",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/THEOplayer/theoplayer-sdk-apple.git",
       "state" : {
-        "revision" : "398a0ccf6e772a9f630584a4b2a387dce605160a",
-        "version" : "9.5.1"
+        "revision" : "6eae91b2c9dc7a0a3bd3ac04f80f3d96e9a35558",
+        "version" : "9.8.2"
       }
     }
   ],
