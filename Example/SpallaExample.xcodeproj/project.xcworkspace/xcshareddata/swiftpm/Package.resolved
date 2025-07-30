@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/taghos/framework-sdk-spalla-iOS",
       "state" : {
-        "revision" : "e6382705c8040ce6df0491c1c8b59a56236b7d3b",
-        "version" : "2.1.1"
+        "revision" : "a43f85ef71bd9240b188c4cc46502f54fc53bbd3",
+        "version" : "2.1.3"
       }
     },
     {
