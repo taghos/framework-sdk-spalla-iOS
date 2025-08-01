@@ -41,6 +41,7 @@ public protocol SpallaPlayerListener : AnyObject {
   @_Concurrency.MainActor public func setup(with contentId: Swift.String, hideUI: Swift.Bool = false, startTime: Swift.Double = 0, subtitle: Swift.String? = nil)
   @_Concurrency.MainActor @objc override dynamic public func viewDidDisappear(_ animated: Swift.Bool)
   @_Concurrency.MainActor public func selectSubtitle(subtitle: Swift.String?)
+  @_Concurrency.MainActor @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor @objc override dynamic public func viewDidLoad()
   @_Concurrency.MainActor @objc override dynamic public func viewDidLayoutSubviews()
   @_Concurrency.MainActor public func startAnalytics()
@@ -61,6 +62,9 @@ public protocol SpallaPlayerListener : AnyObject {
   @_Concurrency.MainActor public func setPlaybackRate(rate: Swift.Double)
   @_Concurrency.MainActor public func unmount()
   @objc deinit
+  @_Concurrency.MainActor @objc override dynamic public var prefersHomeIndicatorAutoHidden: Swift.Bool {
+    @objc get
+  }
   @_Concurrency.MainActor @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @_Concurrency.MainActor @objc required dynamic public init?(coder: Foundation.NSCoder)
 }
