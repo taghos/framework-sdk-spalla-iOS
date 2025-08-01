@@ -184,6 +184,7 @@ public enum ErrorCategory : Swift.Int32, Swift.Codable, Swift.CaseIterable {
   case CACHE
   case THEOLIVE
   case MILLICAST
+  case DVR
   public init?(rawValue: Swift.Int32)
   public typealias AllCases = [THEOplayerSDK.ErrorCategory]
   public typealias RawValue = Swift.Int32
@@ -430,6 +431,7 @@ public enum IntegrationError : Swift.Error {
   case ANALYTICS
   case MILLICAST
   case THEOlive
+  case DVR
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -607,6 +609,7 @@ extension THEOplayerSDK.AdIntegration : Swift.Codable {
     get
     set
   }
+  public var enableStreamingDVR: Swift.Bool?
   public var poster: Foundation.URL? {
     get
     set
@@ -619,7 +622,7 @@ extension THEOplayerSDK.AdIntegration : Swift.Codable {
     get
     set
   }
-  public init(sources: [THEOplayerSDK.TypedSource], textTracks: [THEOplayerSDK.TextTrackDescription]? = nil, ads: [any THEOplayerSDK.AdDescription]? = nil, poster: Swift.String? = nil, metadata: THEOplayerSDK.MetadataDescription? = nil, abr: THEOplayerSDK.SourceAbrConfiguration? = nil)
+  public init(sources: [THEOplayerSDK.TypedSource], textTracks: [THEOplayerSDK.TextTrackDescription]? = nil, ads: [any THEOplayerSDK.AdDescription]? = nil, poster: Swift.String? = nil, metadata: THEOplayerSDK.MetadataDescription? = nil, abr: THEOplayerSDK.SourceAbrConfiguration? = nil, enableStreamingDVR: Swift.Bool = false)
   public init(source: THEOplayerSDK.TypedSource, textTracks: [THEOplayerSDK.TextTrackDescription]? = nil, ads: [any THEOplayerSDK.AdDescription]? = nil, poster: Swift.String? = nil, metadata: THEOplayerSDK.MetadataDescription? = nil, abr: THEOplayerSDK.SourceAbrConfiguration? = nil)
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -630,6 +633,7 @@ public enum SourceType : Swift.String {
   case HLS
   case DASH
   case HESP
+  case MILLICAST
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -657,7 +661,9 @@ public struct THEOAdDescription : THEOplayerSDK.AdDescription {
   public var sseEndpoint: Swift.String?
   public let retrievePodIdURI: Swift.String?
   public let initializationDelay: Foundation.TimeInterval?
-  public init(networkCode: Swift.String? = nil, customAssetKey: Swift.String? = nil, backdropDoubleBox: Foundation.URL? = nil, backdropLShape: Foundation.URL? = nil, overrideLayout: THEOplayerSDK.THEOAdDescription.LayoutOverride? = nil, overrideAdSrc: Foundation.URL? = nil, adTagParameters: Swift.Dictionary<Swift.String, Swift.String>? = nil, useId3: Swift.Bool? = nil, streamActivityMonitorId: Swift.String? = nil, sseEndpoint: Swift.String? = nil, retrievePodIdURI: Swift.String? = nil, initializationDelay: Foundation.TimeInterval? = nil)
+  public let returnToLive: Swift.Bool
+  public var daiAssetKey: Swift.String?
+  public init(networkCode: Swift.String? = nil, customAssetKey: Swift.String? = nil, backdropDoubleBox: Foundation.URL? = nil, backdropLShape: Foundation.URL? = nil, overrideLayout: THEOplayerSDK.THEOAdDescription.LayoutOverride? = nil, overrideAdSrc: Foundation.URL? = nil, adTagParameters: Swift.Dictionary<Swift.String, Swift.String>? = nil, useId3: Swift.Bool? = nil, streamActivityMonitorId: Swift.String? = nil, sseEndpoint: Swift.String? = nil, retrievePodIdURI: Swift.String? = nil, initializationDelay: Foundation.TimeInterval? = nil, returnToLive: Swift.Bool? = nil, daiAssetKey: Swift.String? = nil)
   public enum LayoutOverride {
     case single
     case lShape
@@ -701,6 +707,9 @@ public struct THEOAdDescription : THEOplayerSDK.AdDescription {
     @_spi(Core) get
   }
   @_spi(Core) override open var textTracks: any THEOplayerSDK.TextTrackListImplNative & THEOplayerSDK.TextTrackList {
+    @_spi(Core) get
+  }
+  @_spi(Core) open var avPlayerViewInterface: (any THEOplayerSDK.AVPlayerContentPlayerNativeViewInterface)? {
     @_spi(Core) get
   }
   @_spi(Core) public func swapPlayer(newPlayer: any THEOplayerSDK.ContentPlayer, switchTracks: Swift.Bool = true)
@@ -974,6 +983,41 @@ public struct InvalidUrlError : THEOplayerSDK.THEOBaseError, Swift.Error {
     get
   }
 }
+@_spi(Core) public protocol SegmentInterceptor : THEOplayerSDK.MediaPlaylistInterceptor {
+  @_spi(Core) func shouldInterceptSegmentRequests() -> Swift.Bool
+  #if compiler(>=5.3) && $AsyncAwait
+  @_spi(Core) func didInterceptSegmentRequest(request: Foundation.URLRequest) async throws -> Foundation.URLRequest
+  #endif
+}
+@_spi(Core) public enum ManifestURLType : Swift.String, Swift.CaseIterable {
+  @_spi(Core) case master
+  @_spi(Core) case audio
+  @_spi(Core) case video
+  @_spi(Core) case subtitles
+  @_spi(Core) case iframe
+  @_spi(Core) case segment
+  @_spi(Core) public init?(rawValue: Swift.String)
+  @_spi(Core) public typealias AllCases = [THEOplayerSDK.ManifestURLType]
+  @_spi(Core) public typealias RawValue = Swift.String
+  @_spi(Core) public static var allCases: [THEOplayerSDK.ManifestURLType] {
+    @_spi(Core) get
+  }
+  @_spi(Core) public var rawValue: Swift.String {
+    @_spi(Core) get
+  }
+}
+@_spi(Core) extension THEOplayerSDK.HlsPlaylistType {
+  @_spi(Core) public init?(from: THEOplayerSDK.ManifestURLType)
+}
+@_spi(Core) @objc @_inheritsConvenienceInitializers public class AVAssetResourceLoaderProxy : ObjectiveC.NSObject {
+  @_spi(Core) @objc override dynamic public init()
+  @_spi(Core) @objc deinit
+}
+@_spi(Core) extension THEOplayerSDK.AVAssetResourceLoaderProxy : AVFoundation.AVAssetResourceLoaderDelegate {
+  @_spi(Core) @objc dynamic public func resourceLoader(_ resourceLoader: AVFoundation.AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVFoundation.AVAssetResourceLoadingRequest) -> Swift.Bool
+  @_spi(Core) @objc dynamic public func resourceLoader(_ resourceLoader: AVFoundation.AVAssetResourceLoader, shouldWaitForRenewalOfRequestedResource renewalRequest: AVFoundation.AVAssetResourceRenewalRequest) -> Swift.Bool
+  @_spi(core) @objc dynamic public func resourceLoader(_ resourceLoader: AVFoundation.AVAssetResourceLoader, didCancel loadingRequest: AVFoundation.AVAssetResourceLoadingRequest)
+}
 @_spi(Core) @_hasMissingDesignatedInitializers public class TrackUIDGenerator {
   @_spi(Core) public static let shared: THEOplayerSDK.TrackUIDGenerator
   @_spi(Core) public var nextTrackUid: Swift.Int {
@@ -1015,7 +1059,39 @@ extension THEOplayerSDK.TextTrackMode {
 @_spi(Core) extension THEOplayerSDK.AVPlayerTextTracksController : AVFoundation.AVPlayerItemLegibleOutputPushDelegate {
   @_spi(Core) @objc dynamic public func legibleOutput(_ output: AVFoundation.AVPlayerItemLegibleOutput, didOutputAttributedStrings strings: [Foundation.NSAttributedString], nativeSampleBuffers nativeSamples: [Any], forItemTime itemTime: CoreMedia.CMTime)
 }
-public protocol Network : THEOplayerSDK.EventDispatcherProtocol {
+public enum HlsPlaylistType : Swift.String, Swift.CaseIterable {
+  case master
+  case video
+  case audio
+  case subtitles
+  case iframe
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [THEOplayerSDK.HlsPlaylistType]
+  public typealias RawValue = Swift.String
+  public static var allCases: [THEOplayerSDK.HlsPlaylistType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol MediaPlaylistInterceptor : AnyObject {
+  func shouldInterceptPlaylistRequest(type: THEOplayerSDK.HlsPlaylistType) -> Swift.Bool
+  func shouldInterceptPlaylistResponse(type: THEOplayerSDK.HlsPlaylistType) -> Swift.Bool
+  #if compiler(>=5.3) && $AsyncAwait
+  func didInterceptPlaylistRequest(type: THEOplayerSDK.HlsPlaylistType, request: Foundation.URLRequest) async throws -> Foundation.URLRequest
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func didInterceptPlaylistResponse(type: THEOplayerSDK.HlsPlaylistType, url: Foundation.URL, response: Foundation.URLResponse, data: Foundation.Data) async throws -> Foundation.Data
+  #endif
+  func failedToPerformURLRequest(request: Foundation.URLRequest, response: Foundation.URLResponse)
+}
+public protocol NetworkAPI {
+  func addMediaPlaylistInterceptor(_ interceptor: any THEOplayerSDK.MediaPlaylistInterceptor)
+  func removeMediaPlaylistInterceptor(_ interceptor: any THEOplayerSDK.MediaPlaylistInterceptor)
+  func removeAllInterceptors()
+}
+public protocol Network : THEOplayerSDK.EventDispatcherProtocol, THEOplayerSDK.NetworkAPI {
 }
 public struct PlayerEventTypes {
   public static var PLAY: THEOplayerSDK.EventType<THEOplayerSDK.PlayEvent>
@@ -1100,6 +1176,8 @@ public struct PlayerEventTypes {
   public func build() -> THEOplayerSDK.PiPConfiguration
   @objc override dynamic public init()
   @objc deinit
+}
+public protocol DVRIntegration : THEOplayerSDK.Integration {
 }
 @objc public protocol ChromecastConnectionDelegate {
   @objc optional func onStart(sourceDescription: THEOplayerSDK.SourceDescription?) -> THEOplayerSDK.SourceDescription?
@@ -1352,7 +1430,7 @@ extension THEOplayerSDK.THEOplayer {
     @_spi(Core) get
     @_spi(Core) set
   }
-  @_spi(Core) public init(properties: THEOplayerSDK.ContentPlayerProperties, underlying: AVFoundation.AVPlayer = AVPlayer())
+  @_spi(Core) public init(properties: THEOplayerSDK.ContentPlayerProperties, underlying: AVFoundation.AVPlayer = AVPlayer(), avAssetResourceLoaderProxy: THEOplayerSDK.AVAssetResourceLoaderProxy? = nil)
   @_spi(Core) override public func sourceUpdated(source: THEOplayerSDK.SourceDescription)
   @_spi(Core) override public func presentationModeChanged(presentationMode: THEOplayerSDK.PresentationMode)
   @_spi(Core) override public func fullscreenAspectRatioUpdated(aspectRatio: THEOplayerSDK.AspectRatio)
@@ -1509,6 +1587,9 @@ public struct AudioTrackListEventTypes {
 }
 @_spi(Core) public protocol RoutableIntegration : THEOplayerSDK.ContentPlayer, THEOplayerSDK.Integration {
   @_spi(Core) var backingPlayer: any THEOplayerSDK.ContentPlayer { get set }
+  @_spi(Core) var network: any THEOplayerSDK.NetworkAPI { get set }
+}
+@_spi(Core) public protocol InternalRoutableIntegration : THEOplayerSDK.RoutableIntegration {
 }
 extension Foundation.Bundle {
   @_spi(Core) public static var isForTesting: Swift.Bool {
@@ -1769,6 +1850,10 @@ public enum THEOErrorCode : Swift.Int32, Swift.Codable, Swift.CaseIterable {
   case MILLICAST_SUBSCRIBE_ERROR
   case MILLICAST_SET_VOLUME_ERROR
   case MILLCAST_WEBRTC_SIGNALING_ERROR
+  case DVR_UNKNOWN_ERROR
+  case DVR_SEEK_OUT_OF_RANGE
+  case DVR_SEEK_RANGES_UNAVAILABLE
+  case DVR_INVALID_SOURCE
   public init?(rawValue: Swift.Int32)
   public typealias AllCases = [THEOplayerSDK.THEOErrorCode]
   public typealias RawValue = Swift.Int32
@@ -2213,6 +2298,9 @@ public class VudrmDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration
   public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit
 }
+extension Swift.Dictionary where Key == Swift.String, Value == Swift.String {
+  @_spi(Core) public func toQueryItems() -> [Foundation.URLQueryItem]
+}
 public class THEOArray<Element> {
   public init()
   convenience public init(_ array: [Element])
@@ -2264,6 +2352,7 @@ extension Swift.Comparable {
   @_spi(Core) var playerConfiguration: THEOplayerSDK.THEOplayerConfiguration { get set }
   @_spi(Core) var contentPlayer: THEOplayerSDK.ContentPlayerNative { get }
   @_spi(Core) var eventDispatcher: any THEOplayerSDK.EventDispatcher { get }
+  @_spi(Core) var analyticsReporter: THEOplayerSDK.AnalyticsReporter { get }
   @_spi(Core) var frame: CoreFoundation.CGRect { get set }
   @_spi(Core) var bounds: CoreFoundation.CGRect { get set }
   @_spi(Core) var center: CoreFoundation.CGPoint { get set }
@@ -2337,7 +2426,7 @@ extension Swift.Comparable {
   required public init(from decoder: any Swift.Decoder) throws
 }
 @_spi(Core) extension Foundation.URLResponse {
-  @_spi(Core) public func isSuccessfull() -> Swift.Bool?
+  @_spi(Core) public func isSuccessfull() -> Swift.Bool
 }
 public struct AdsEventTypes {
   public static var AD_BEGIN: THEOplayerSDK.EventType<THEOplayerSDK.AdBeginEvent>
@@ -2868,6 +2957,19 @@ extension THEOplayerSDK.CastStrategy : Swift.Encodable {
   }
   public func encode(to encoder: any Swift.Encoder) throws
 }
+@_spi(Core) @_hasMissingDesignatedInitializers public class AnalyticsReporter {
+  @_spi(Core) public enum THEOadsType : Swift.String {
+    @_spi(Core) case ad
+    @_spi(Core) case overlay
+    @_spi(Core) public init?(rawValue: Swift.String)
+    @_spi(Core) public typealias RawValue = Swift.String
+    @_spi(Core) public var rawValue: Swift.String {
+      @_spi(Core) get
+    }
+  }
+  @_spi(Core) public func reportTHEOAdsImpression(adType: THEOplayerSDK.AnalyticsReporter.THEOadsType)
+  @_spi(Core) @objc deinit
+}
 public struct FullscreenEventTypes {
 }
 public protocol Cast : THEOplayerSDK.EventDispatcherProtocol {
@@ -3062,7 +3164,11 @@ public struct NetworkEventTypes {
   @_spi(Core) @_Concurrency.MainActor(unsafe) public func removeDelegate(_ delegate: any THEOplayerSDK.PlayerViewDelegate)
   @_spi(Core) @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
   @_spi(Core) @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToSuperview()
+  @_spi(Core) @_Concurrency.MainActor(unsafe) public func resizeContentPlayerView(_ view: UIKit.UIView)
   @_spi(Core) @_Concurrency.MainActor(unsafe) public func addContentPlayerView(contentPlayerView: UIKit.UIView)
+  @_spi(Core) @objc deinit
+}
+@_spi(Core) @_hasMissingDesignatedInitializers public class HLSManifestLineParser {
   @_spi(Core) @objc deinit
 }
 @objc public class THEOplayer : ObjectiveC.NSObject, THEOplayerSDK.EventDispatcherProtocol {
@@ -3803,6 +3909,13 @@ public protocol AirPlay : THEOplayerSDK.EventDispatcherProtocol {
   func start()
   func stop()
 }
+@_spi(Core) public class DummyNetworkAPI : THEOplayerSDK.NetworkAPI {
+  @_spi(Core) public init()
+  @_spi(Core) public func addMediaPlaylistInterceptor(_ interceptor: any THEOplayerSDK.MediaPlaylistInterceptor)
+  @_spi(Core) public func removeMediaPlaylistInterceptor(_ interceptor: any THEOplayerSDK.MediaPlaylistInterceptor)
+  @_spi(Core) public func removeAllInterceptors()
+  @_spi(Core) @objc deinit
+}
 @_spi(Core) public protocol DefaultIdentifiable : Swift.Identifiable {
   @_spi(Core) var id: Foundation.UUID { get }
 }
@@ -3917,6 +4030,12 @@ extension THEOplayerSDK.SourceType : Swift.RawRepresentable {}
 extension THEOplayerSDK.THEOAdDescription.LayoutOverride : Swift.Equatable {}
 extension THEOplayerSDK.THEOAdDescription.LayoutOverride : Swift.Hashable {}
 @_spi(Core) extension THEOplayerSDK.EventSource : THEOplayerSDK.EventSourceDelegate {}
+@_spi(Core) extension THEOplayerSDK.ManifestURLType : Swift.Equatable {}
+@_spi(Core) extension THEOplayerSDK.ManifestURLType : Swift.Hashable {}
+@_spi(Core) extension THEOplayerSDK.ManifestURLType : Swift.RawRepresentable {}
+extension THEOplayerSDK.HlsPlaylistType : Swift.Equatable {}
+extension THEOplayerSDK.HlsPlaylistType : Swift.Hashable {}
+extension THEOplayerSDK.HlsPlaylistType : Swift.RawRepresentable {}
 extension THEOplayerSDK.TextTrackMode : Swift.Equatable {}
 extension THEOplayerSDK.TextTrackMode : Swift.Hashable {}
 extension THEOplayerSDK.TextTrackMode : Swift.RawRepresentable {}
@@ -3974,6 +4093,9 @@ extension THEOplayerSDK.PictureInPictureCorner : Swift.RawRepresentable {}
 extension THEOplayerSDK.CastStrategy : Swift.Equatable {}
 extension THEOplayerSDK.CastStrategy : Swift.Hashable {}
 extension THEOplayerSDK.CastStrategy : Swift.RawRepresentable {}
+@_spi(Core) extension THEOplayerSDK.AnalyticsReporter.THEOadsType : Swift.Equatable {}
+@_spi(Core) extension THEOplayerSDK.AnalyticsReporter.THEOadsType : Swift.Hashable {}
+@_spi(Core) extension THEOplayerSDK.AnalyticsReporter.THEOadsType : Swift.RawRepresentable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.Equatable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.Hashable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.RawRepresentable {}
