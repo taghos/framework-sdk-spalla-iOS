@@ -33,6 +33,8 @@ public enum SpallaPlayerEvent {
   case subtitlesAvailable(subtitles: [Swift.String])
   case subtitleSelected(subtitle: Swift.String?)
   case playbackRateChanged(rate: Swift.Double)
+  case enterFullScreen
+  case exitFullScreen
 }
 public protocol SpallaPlayerListener : AnyObject {
   func onEvent(event: SpallaSDK.SpallaPlayerEvent)
