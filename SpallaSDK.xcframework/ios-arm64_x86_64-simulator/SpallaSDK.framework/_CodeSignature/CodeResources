@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/SpallaSDK-Swift.h</key>
 		<data>
-		U66adbifjXaZU/gu5Skwck2Z/ng=
+		mSo2gIHM3nCYZYmktX7tAeydJcs=
 		</data>
 		<key>Headers/SpallaSDK.h</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		p11STagDNMr/5r6/danyLps048I=
+		Rfr7vriRyNSV8qW/iMttNjWRsZ0=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		nsHzHenGq7ZhvtcYNxUyZ2gaeAQ=
+		fZs9bKJxuiBPhu6uXrRirFmTg2k=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -38,19 +38,19 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		nsHzHenGq7ZhvtcYNxUyZ2gaeAQ=
+		fZs9bKJxuiBPhu6uXrRirFmTg2k=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		4MF52mONmVn8Gs7IVz3gAJ1aMnE=
+		vB9NshfJ0VuhC+S579g9YmNFN7s=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		p11STagDNMr/5r6/danyLps048I=
+		Rfr7vriRyNSV8qW/iMttNjWRsZ0=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		FgWzPwrQmWcR0pL5xC0eGUvPxfc=
+		vl7AR62o8qXk54OkELKGQkLRkVs=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -58,11 +58,11 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		FgWzPwrQmWcR0pL5xC0eGUvPxfc=
+		vl7AR62o8qXk54OkELKGQkLRkVs=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		wVc73e9d1efmvGeOXzjcDUQdNaE=
+		YFz+CX3uoHgGUPLD9xu4PZIriIw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -114,7 +114,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qGT6HNiQEw7cDrpNwVUv6RUA6RSuh4rbseiEmpKMZbk=
+			oi92TsqUnU8U2qmvj14kbZgm8z9uAvp8UasvPexV0Q0=
 			</data>
 		</dict>
 		<key>Headers/SpallaSDK.h</key>
@@ -135,14 +135,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kjVLmfHNXpm9tDgRAqSfP4VxRGlgS438tkAdPftMfZw=
+			exJlb4YvqhFwwoS43BVdcJw3ZwJsPrjHB+KuSXCTf5w=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4tmHhWHZxBMdkbNyCUjYpgVzEQ+H/eyHM7W5/izU7Qw=
+			Kl744yw6Var8kV+Re15lft4OemaautaR0hKSjgZ/8qo=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -156,28 +156,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4tmHhWHZxBMdkbNyCUjYpgVzEQ+H/eyHM7W5/izU7Qw=
+			Kl744yw6Var8kV+Re15lft4OemaautaR0hKSjgZ/8qo=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Bsw2XUOnFvn5USYGAoXoT1zEplf1JVzZc8A2B+KHN60=
+			FUv7MqxrN+qCVupldemD91pwPFxT9F1+8iyqiP5k6NA=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kjVLmfHNXpm9tDgRAqSfP4VxRGlgS438tkAdPftMfZw=
+			exJlb4YvqhFwwoS43BVdcJw3ZwJsPrjHB+KuSXCTf5w=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qDRpJVDHU/NcUJbh2fI4Eu71mYqVWQfb2Ul+sR+eA4c=
+			kuPaX09FbIHteEkeppiWjqCR9ufmsV5iMRWDnBwQ71M=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -191,14 +191,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qDRpJVDHU/NcUJbh2fI4Eu71mYqVWQfb2Ul+sR+eA4c=
+			kuPaX09FbIHteEkeppiWjqCR9ufmsV5iMRWDnBwQ71M=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yUqeHLNcdkR/qrVUZ0/TJ/cyUtK6hLnQz2auGepUvwo=
+			24Lm1DbFrb7cuOAh94UKjy8lN/3lSLIdojJj1vWSpQY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
