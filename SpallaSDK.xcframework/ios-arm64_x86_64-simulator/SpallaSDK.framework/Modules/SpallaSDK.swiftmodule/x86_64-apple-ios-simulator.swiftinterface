@@ -2,7 +2,9 @@
 // swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
 // swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name SpallaSDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
+import AVFoundation
 import Combine
+import CoreMedia
 import DeveloperToolsSupport
 import Foundation
 import GoogleCast
@@ -10,10 +12,1232 @@ import GoogleCast
 import Swift
 import SwiftUI
 import THEOplayerSDK
+import TinyCSV
 import UIKit
+import UniformTypeIdentifiers
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers public class BytesParser {
+  public static let BOMUTF8: [Swift.UInt8]
+  public static let BOMUTF16LE: [Swift.UInt8]
+  public static let BOMUTF16BE: [Swift.UInt8]
+  public static let terminator8: Swift.UInt8
+  public static let terminator16: [Swift.UInt8]
+  public static let terminator32: [Swift.UInt8]
+  @objc deinit
+}
+extension SpallaSDK.BytesReader {
+  public enum ReaderError : Swift.Error {
+    case invalidFile
+    case endOfData
+    case invalidStringEncoding
+    case invalidOffset
+    case randomAccessSeekingNotSupportedBySource
+    public static func == (a: SpallaSDK.BytesReader.ReaderError, b: SpallaSDK.BytesReader.ReaderError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension SpallaSDK.BytesWriter {
+  public enum WriterError : Swift.Error {
+    case cannotConvertStringEncoding
+    case cannotOpenOutputFile
+    case unableToWriteBytes
+    case emptyBuffer
+    case notSupported
+    case noDataAvailable
+    case invalidByteString
+    public static func == (a: SpallaSDK.BytesWriter.WriterError, b: SpallaSDK.BytesWriter.WriterError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension SpallaSDK.BytesParser {
+  public enum Endianness {
+    case big
+    case little
+    public static func == (a: SpallaSDK.BytesParser.Endianness, b: SpallaSDK.BytesParser.Endianness) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension Swift.FixedWidthInteger {
+  @inlinable @inline(__always) internal func usingEndianness(_ byteOrder: SpallaSDK.BytesParser.Endianness) -> Self {
+		(byteOrder == .big) ? self.bigEndian : self.littleEndian
+	}
+}
+public class BytesWriter {
+  public var count: Swift.Int {
+    get
+  }
+  public init() throws
+  public init(fileURL: Foundation.URL) throws
+  public func complete()
+  public func data() throws -> Foundation.Data
+  @inlinable public func rawBytes() throws -> [Swift.UInt8] {
+		Array(try self.data())
+	}
+  @objc deinit
+}
+extension SpallaSDK.BytesWriter {
+  public func padToNByteBoundary(byteBoundary: Swift.Int, using byte: Swift.UInt8 = 0x00) throws
+  @inlinable public func padToFourByteBoundary(using byte: Swift.UInt8 = 0x00) throws {
+		try self.padToNByteBoundary(byteBoundary: 4, using: byte)
+	}
+  @inlinable public func padToEightByteBoundary(using byte: Swift.UInt8 = 0x00) throws {
+		try self.padToNByteBoundary(byteBoundary: 8, using: byte)
+	}
+}
+extension SpallaSDK.BytesWriter {
+  public static func build(_ block: (SpallaSDK.BytesWriter) throws -> Swift.Void) throws -> Foundation.Data
+  public static func build(fileURL: Foundation.URL, _ block: (SpallaSDK.BytesWriter) throws -> Swift.Void) throws
+}
+extension SpallaSDK.BytesWriter {
+  @discardableResult
+  public func writeStringSingleByteEncoding(_ string: Swift.String, encoding: Swift.String.Encoding, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int
+  @discardableResult
+  @inlinable public func writeStringASCII(_ string: Swift.String, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int {
+		try self.writeStringSingleByteEncoding(string, encoding: .ascii, includeNullTerminator: includeNullTerminator)
+	}
+  @discardableResult
+  @inlinable public func writeStringUTF8(_ string: Swift.String, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int {
+		try self.writeStringSingleByteEncoding(string, encoding: .utf8, includeNullTerminator: includeNullTerminator)
+	}
+  @discardableResult
+  @inlinable public func writeStringISOLatin1(_ string: Swift.String, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int {
+		try self.writeStringSingleByteEncoding(string, encoding: .isoLatin1, includeNullTerminator: includeNullTerminator)
+	}
+}
+extension SpallaSDK.BytesWriter {
+  @discardableResult
+  public func writeStringWide16(_ string: Swift.String, encoding: Swift.String.Encoding, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int
+  @discardableResult
+  @inlinable public func writeStringUTF16BE(_ string: Swift.String, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int {
+		try self.writeStringWide16(string, encoding: .utf16BigEndian, includeNullTerminator: includeNullTerminator)
+	}
+  @discardableResult
+  @inlinable public func writeStringUTF16LE(_ string: Swift.String, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int {
+		try self.writeStringWide16(string, encoding: .utf16LittleEndian, includeNullTerminator: includeNullTerminator)
+	}
+}
+extension SpallaSDK.BytesWriter {
+  @discardableResult
+  public func writeStringWide32(_ string: Swift.String, encoding: Swift.String.Encoding, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int
+  @discardableResult
+  @inlinable public func writeStringUTF32(_ string: Swift.String, endianness: SpallaSDK.BytesParser.Endianness, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int {
+		try self.writeStringWide32(
+			string,
+			encoding: endianness == .big ? .utf32BigEndian : .utf32LittleEndian,
+			includeNullTerminator: includeNullTerminator
+		)
+	}
+  @discardableResult
+  @inlinable public func writeStringUTF32BE(_ string: Swift.String, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int {
+		try self.writeStringWide32(string, encoding: .utf32BigEndian, includeNullTerminator: includeNullTerminator)
+	}
+  @discardableResult
+  @inlinable public func writeStringUTF32LE(_ string: Swift.String, includeNullTerminator: Swift.Bool = false) throws -> Swift.Int {
+		try self.writeStringWide32(string, encoding: .utf32LittleEndian, includeNullTerminator: includeNullTerminator)
+	}
+}
+extension SpallaSDK.BytesReader {
+  public func readStringSingleByteEncoding(_ encoding: Swift.String.Encoding, length: Swift.Int, lengthIncludesTerminator: Swift.Bool = false) throws -> Swift.String
+  public func readStringSingleByteEncodingNullTerminated(_ encoding: Swift.String.Encoding) throws -> Swift.String
+}
+extension SpallaSDK.BytesReader {
+  @inlinable public func readStringASCII(length: Swift.Int, lengthIncludesTerminator: Swift.Bool = false) throws -> Swift.String {
+		try self.readStringSingleByteEncoding(.ascii, length: length, lengthIncludesTerminator: lengthIncludesTerminator)
+	}
+  @inlinable public func readStringASCIINullTerminated() throws -> Swift.String {
+		try self.readStringSingleByteEncodingNullTerminated(.ascii)
+	}
+}
+extension SpallaSDK.BytesReader {
+  @inlinable public func readStringUTF8(byteCount: Swift.Int, lengthIncludesTerminator: Swift.Bool = false) throws -> Swift.String {
+		try self.readStringSingleByteEncoding(.utf8, length: byteCount, lengthIncludesTerminator: lengthIncludesTerminator)
+	}
+  @inlinable public func readStringUTF8NullTerminated() throws -> Swift.String {
+		try self.readStringSingleByteEncodingNullTerminated(.utf8)
+	}
+}
+extension SpallaSDK.BytesReader {
+  public func readStringWide16(_ encoding: Swift.String.Encoding, length: Swift.Int) throws -> Swift.String
+  public func readStringWide16NullTerminated(encoding: Swift.String.Encoding) throws -> Swift.String
+}
+extension SpallaSDK.BytesReader {
+  @inlinable public func readStringUTF16(_ byteOrder: SpallaSDK.BytesParser.Endianness, length: Swift.Int) throws -> Swift.String {
+		try self.readStringWide16((byteOrder == .big) ? .utf16BigEndian : .utf16LittleEndian, length: length)
+	}
+  @inlinable @inline(__always) public func readStringUTF16BE(length: Swift.Int) throws -> Swift.String {
+		try self.readStringWide16(.utf16BigEndian, length: length)
+	}
+  @inlinable @inline(__always) public func readStringUTF16LE(length: Swift.Int) throws -> Swift.String {
+		try self.readStringWide16(.utf16LittleEndian, length: length)
+	}
+  @inlinable public func readStringUTF16NullTerminated(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.String {
+		try self.readStringWide16NullTerminated(encoding: (byteOrder == .big) ? .utf16BigEndian : .utf16LittleEndian)
+	}
+}
+extension SpallaSDK.BytesReader {
+  public func readStringWide32(_ encoding: Swift.String.Encoding, length: Swift.Int) throws -> Swift.String
+  @inlinable @inline(__always) public func readStringUTF32BE(length: Swift.Int) throws -> Swift.String {
+		try self.readStringWide32(.utf32BigEndian, length: length)
+	}
+  @inlinable @inline(__always) public func readStringUTF32LE(length: Swift.Int) throws -> Swift.String {
+		try self.readStringWide32(.utf32LittleEndian, length: length)
+	}
+  public func readStringWide32NullTerminated(_ encoding: Swift.String.Encoding) throws -> Swift.String
+}
+extension SpallaSDK.BytesReader {
+  @inlinable public func readStringUTF32(_ byteOrder: SpallaSDK.BytesParser.Endianness, length: Swift.Int) throws -> Swift.String {
+		try self.readStringWide32(
+			(byteOrder == .big) ? .utf32BigEndian : .utf32LittleEndian,
+			length: length
+		)
+	}
+  @inlinable public func readStringUTF32NullTerminated(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.String {
+		try self.readStringWide32NullTerminated((byteOrder == .big) ? .utf32BigEndian : .utf32LittleEndian)
+	}
+}
+extension SpallaSDK.BytesWriter {
+  @discardableResult
+  public func writeData(_ data: Foundation.Data) throws -> Swift.Int
+  @discardableResult
+  public func writeBytes(_ bytes: [Swift.UInt8]) throws -> Swift.Int
+  @discardableResult
+  public func writeBytes(_ rawBytes: Swift.UInt8...) throws -> Swift.Int
+  @discardableResult
+  public func writeByte(_ byte: Swift.UInt8) throws -> Swift.Int
+}
+public class InputStreamSource : SpallaSDK.BytesReaderSource {
+  public var readPosition: Swift.Int {
+    get
+  }
+  public init(inputStream: Foundation.InputStream)
+  public var hasMoreData: Swift.Bool {
+    get
+  }
+  public func readData(count: Swift.Int) throws -> Foundation.Data
+  public func readByte() throws -> Swift.UInt8
+  public func readAllRemainingData() throws -> Foundation.Data
+  public func rewind() throws
+  public func seekSet(_ offset: Swift.Int) throws
+  public func seekEnd(_ offset: Swift.Int) throws
+  public func seek(_ offset: Swift.Int) throws
+  @objc deinit
+}
+extension SpallaSDK.BytesReader {
+  public func readFloat32(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Float32
+  @inlinable public func readFloat32(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [Swift.Float32] {
+		assert(count > 0)
+		let values = try self.readUInt32(byteOrder, count: count)
+		return values.map { Float32(bitPattern: $0) }
+	}
+  @inlinable public func readFloat64(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Float64 {
+		Float64(bitPattern: try self.readUInt64(byteOrder))
+	}
+  @inlinable public func readFloat64(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [Swift.Float64] {
+		assert(count > 0)
+		let values = try self.readUInt64(byteOrder, count: count)
+		return values.map { Float64(bitPattern: $0) }
+	}
+}
+extension SpallaSDK.BytesReader {
+  @inlinable public func readDouble(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Double {
+		Float64(bitPattern: try self.readUInt64(byteOrder))
+	}
+  @inlinable public func readDouble(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [Swift.Double] {
+		assert(count > 0)
+		let values = try self.readUInt64(byteOrder, count: count)
+		return values.map { Double(bitPattern: $0) }
+	}
+}
+extension SpallaSDK.BytesWriter {
+  @discardableResult
+  @inlinable public func writeBool(_ value: Swift.Bool) throws -> Swift.Int {
+		return try self.writeByte(value ? 0x01 : 0x00)
+	}
+}
+extension SpallaSDK.BytesReader {
+  public func readInteger<T>(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> T where T : Swift.FixedWidthInteger
+  public func readIntegers<T>(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [T] where T : Swift.FixedWidthInteger
+}
+extension SpallaSDK.BytesReader {
+  @inlinable public func readInt8() throws -> Swift.Int8 {
+		Int8(bitPattern: try self.readByte())
+	}
+  @inlinable public func readInt8(count: Swift.Int) throws -> [Swift.Int8] {
+		let bytes = try self.readBytes(count: count)
+		return bytes.map { Int8(bitPattern: $0) }
+	}
+  @inlinable public func readInt16(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int16 {
+		try readInteger(byteOrder)
+	}
+  @inlinable public func readInt16(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [Swift.Int16] {
+		try self.readIntegers(byteOrder, count: count)
+	}
+  @inlinable public func readInt32(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int32 {
+		try readInteger(byteOrder)
+	}
+  @inlinable public func readInt32(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [Swift.Int32] {
+		try self.readIntegers(byteOrder, count: count)
+	}
+  @inlinable public func readInt64(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int64 {
+		try readInteger(byteOrder)
+	}
+  @inlinable public func readInt64(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [Swift.Int64] {
+		try self.readIntegers(byteOrder, count: count)
+	}
+}
+extension SpallaSDK.BytesReader {
+  @inlinable public func readUInt8() throws -> Swift.UInt8 {
+		try self.readByte()
+	}
+  @inlinable public func readUInt8(count: Swift.Int) throws -> [Swift.UInt8] {
+		try self.readBytes(count: count)
+	}
+  @inlinable public func readUInt16(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.UInt16 {
+		try readInteger(byteOrder)
+	}
+  @inlinable public func readUInt16(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [Swift.UInt16] {
+		try self.readIntegers(byteOrder, count: count)
+	}
+  @inlinable public func readUInt32(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.UInt32 {
+		try readInteger(byteOrder)
+	}
+  @inlinable public func readUInt32(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [Swift.UInt32] {
+		try self.readIntegers(byteOrder, count: count)
+	}
+  @inlinable public func readUInt64(_ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.UInt64 {
+		try readInteger(byteOrder)
+	}
+  @inlinable public func readUInt64(_ byteOrder: SpallaSDK.BytesParser.Endianness, count: Swift.Int) throws -> [Swift.UInt64] {
+		try self.readIntegers(byteOrder, count: count)
+	}
+}
+extension SpallaSDK.BytesReader {
+  @inlinable @inline(__always) public func readByte() throws -> Swift.UInt8 {
+		try self.source.readByte()
+	}
+  @inlinable @inline(__always) public func readBytes(count: Swift.Int) throws -> [Swift.UInt8] {
+		guard count > 0 else { return [] }
+		return try self.source.readBytes(count: count)
+	}
+  @inlinable @inline(__always) public func readData(count: Swift.Int) throws -> Foundation.Data {
+		guard count > 0 else { return Data() }
+		return try self.source.readData(count: count)
+	}
+  public func readUpToNextInstanceOfByte(_ byte: Swift.UInt8) throws -> Foundation.Data
+  @inlinable @inline(__always) public func readUpToNextNullByte() throws -> Foundation.Data {
+		try self.readUpToNextInstanceOfByte(0x00)
+	}
+  @inlinable @inline(__always) public func readAllRemainingData() throws -> Foundation.Data {
+		try self.source.readAllRemainingData()
+	}
+}
+extension SpallaSDK.BytesWriter {
+  public func writeInteger<T>(_ value: T, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int where T : Swift.FixedWidthInteger
+  @discardableResult
+  public func writeIntegers<T>(_ values: [T], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int where T : Swift.FixedWidthInteger
+}
+extension SpallaSDK.BytesWriter {
+  @discardableResult
+  @inlinable public func writeInt8(_ value: Swift.Int8) throws -> Swift.Int {
+		try self.writeInteger(value, .big)
+	}
+  @discardableResult
+  @inlinable public func writeInt8(_ value: [Swift.Int8]) throws -> Swift.Int {
+		try self.writeIntegers(value, .big)
+	}
+  @discardableResult
+  @inlinable public func writeInt16(_ value: Swift.Int16, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeInteger(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeInt16(_ value: [Swift.Int16], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeIntegers(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeInt32(_ value: Swift.Int32, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeInteger(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeInt32(_ value: [Swift.Int32], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeIntegers(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeInt64(_ value: Swift.Int64, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeInteger(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeInt16(_ value: [Swift.Int64], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeIntegers(value, byteOrder)
+	}
+}
+extension SpallaSDK.BytesWriter {
+  @discardableResult
+  @inlinable public func writeUInt8(_ value: Swift.UInt8) throws -> Swift.Int {
+		try self.writeByte(value)
+	}
+  @discardableResult
+  @inlinable public func writeUInt8(_ value: [Swift.UInt8]) throws -> Swift.Int {
+		try self.writeIntegers(value, .big)
+	}
+  @discardableResult
+  @inlinable public func writeUInt16(_ value: Swift.UInt16, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeInteger(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeInt16(_ value: [Swift.UInt16], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeIntegers(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeUInt32(_ value: Swift.UInt32, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeInteger(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeUInt32(_ value: [Swift.UInt32], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeIntegers(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeUInt64(_ value: Swift.UInt64, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeInteger(value, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeUInt64(_ value: [Swift.UInt64], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeIntegers(value, byteOrder)
+	}
+}
+extension SpallaSDK.BytesWriter {
+  @discardableResult
+  @inlinable public func writeFloat32(_ value: Swift.Float32, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeInteger(value.bitPattern, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeFloat32(_ value: [Swift.Float32], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+ 
+		let bitpats: [UInt32] = value.map { $0.bitPattern }
+		return try self.writeIntegers(bitpats, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeFloat64(_ value: Swift.Float64, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		return try self.writeInteger(value.bitPattern, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeFloat64(_ value: [Swift.Float64], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		let bitpats: [UInt64] = value.map { $0.bitPattern }
+		return try self.writeIntegers(bitpats, byteOrder)
+	}
+}
+extension SpallaSDK.BytesWriter {
+  @discardableResult
+  @inlinable public func writeDouble(_ value: Swift.Double, _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		try self.writeInteger(value.bitPattern, byteOrder)
+	}
+  @discardableResult
+  @inlinable public func writeDouble(_ value: [Swift.Double], _ byteOrder: SpallaSDK.BytesParser.Endianness) throws -> Swift.Int {
+		let bitpats: [UInt64] = value.map { $0.bitPattern }
+		return try self.writeIntegers(bitpats, byteOrder)
+	}
+}
+extension SpallaSDK.BytesReader {
+  @inlinable public func readBool() throws -> Swift.Bool {
+		try self.source.readByte() != 0x00
+	}
+  @inlinable public func readBool(count: Swift.Int) throws -> [Swift.Bool] {
+		assert(count > 0)
+		let data = try self.source.readData(count: count)
+		return data.map { $0 != 0x00 }
+	}
+}
+public class BytesReader {
+  public init(data: Foundation.Data)
+  public init(bytes: [Swift.UInt8])
+  public init(inputStream: Foundation.InputStream)
+  public init(fileURL: Foundation.URL) throws
+  @inlinable public var readPosition: Swift.Int {
+    get { self.source.readPosition }
+  }
+  @inlinable public var hasMoreData: Swift.Bool {
+    get { self.source.hasMoreData }
+  }
+  @usableFromInline
+  final internal let source: any SpallaSDK.BytesReaderSource
+  @objc deinit
+}
+extension SpallaSDK.BytesReader {
+  public enum Seek {
+    case start
+    case end
+    case current
+    public static func == (a: SpallaSDK.BytesReader.Seek, b: SpallaSDK.BytesReader.Seek) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @inlinable public func rewind() throws {
+		try self.source.rewind()
+	}
+  @inlinable public func seekSet(_ offset: Swift.Int) throws {
+		try self.source.seekSet(offset)
+	}
+  @inlinable public func seekEnd(_ offset: Swift.Int) throws {
+		try self.source.seekEnd(offset)
+	}
+  @inlinable public func seek(_ offset: Swift.Int) throws {
+		try self.source.seek(offset)
+	}
+  public func seek(_ offset: Swift.Int, _ direction: SpallaSDK.BytesReader.Seek) throws
+}
+extension Foundation.Data {
+  public func bytesReader(_ block: (SpallaSDK.BytesReader) throws -> Swift.Void) rethrows
+}
+extension SpallaSDK.BytesReader {
+  @inlinable public static func read(data: Foundation.Data, _ block: (SpallaSDK.BytesReader) throws -> Swift.Void) throws {
+		let parser = BytesReader(data: data)
+		try block(parser)
+	}
+  @inlinable public static func read(bytes: [Swift.UInt8], _ block: (SpallaSDK.BytesReader) throws -> Swift.Void) throws {
+		let parser = BytesReader(data: Data(bytes))
+		try block(parser)
+	}
+  public static func read<ResultType>(fileURL: Foundation.URL, _ block: (SpallaSDK.BytesReader) throws -> ResultType) throws -> ResultType
+  @inlinable public static func read(inputStream: Foundation.InputStream, _ block: (SpallaSDK.BytesReader) throws -> Swift.Void) throws {
+		let parser = BytesReader(inputStream: inputStream)
+		try block(parser)
+	}
+  @inlinable public static func data(inputStream: Foundation.InputStream) throws -> Foundation.Data {
+		try BytesReader(inputStream: inputStream).readAllRemainingData()
+	}
+}
+extension SpallaSDK.BytesReader {
+  public func readThroughNextInstanceOfPattern(_ pattern: Foundation.Data) throws
+  public func readThroughNextInstanceOfPattern(_ bytes: Swift.UInt8...) throws
+  public func readThroughNextInstanceOfASCII(_ asciiPattern: Swift.String) throws
+}
+public class InMemorySource : SpallaSDK.BytesReaderSource {
+  public var count: Swift.Int {
+    get
+  }
+  public var readPosition: Swift.Int {
+    get
+  }
+  public init(data: Foundation.Data)
+  public init(bytes: [Swift.UInt8])
+  public var hasMoreData: Swift.Bool {
+    get
+  }
+  public func readOffset() -> Swift.Int
+  public func readData(count: Swift.Int) throws -> Foundation.Data
+  public func readByte() throws -> Swift.UInt8
+  @inlinable @inline(__always) public func readBytes(count: Swift.Int) throws -> [Swift.UInt8] {
+		Array(try self.readData(count: count))
+	}
+  public func readAllRemainingData() throws -> Foundation.Data
+  public func rewind() throws
+  public func seek(_ offset: Swift.Int) throws
+  public func seekSet(_ offset: Swift.Int) throws
+  public func seekEnd(_ offset: Swift.Int) throws
+  @objc deinit
+}
+public class DSFRegex {
+  public var pattern: Swift.String {
+    get
+  }
+  public init(_ pattern: Swift.String, options: Foundation.NSRegularExpression.Options = []) throws
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func hasMatch(_ text: Swift.String, range: Swift.Range<Swift.String.Index>? = nil, options: Foundation.NSRegularExpression.MatchingOptions = []) -> Swift.Bool
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func firstMatch(in text: Swift.String, range: Swift.Range<Swift.String.Index>? = nil, options: Foundation.NSRegularExpression.MatchingOptions = []) -> SpallaSDK.DSFRegex.Match?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func matches(for text: Swift.String, range: Swift.Range<Swift.String.Index>? = nil, options: Foundation.NSRegularExpression.MatchingOptions = []) -> SpallaSDK.DSFRegex.Matches
+  #endif
+  public func matches(for text: Swift.String, rangeFrom: Swift.PartialRangeFrom<Swift.String.Index>, options: Foundation.NSRegularExpression.MatchingOptions = []) -> SpallaSDK.DSFRegex.Matches
+  public func matches(for text: Swift.String, rangeUpTo: Swift.PartialRangeUpTo<Swift.String.Index>, options: Foundation.NSRegularExpression.MatchingOptions = []) -> SpallaSDK.DSFRegex.Matches
+  public func matches(for text: Swift.String, rangeUpToIncluding: Swift.PartialRangeThrough<Swift.String.Index>, options: Foundation.NSRegularExpression.MatchingOptions = []) -> SpallaSDK.DSFRegex.Matches
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func enumerateMatches(in text: Swift.String, range: Swift.Range<Swift.String.Index>? = nil, progress: (() -> Swift.Bool)? = nil, _ matchBlock: @escaping (SpallaSDK.DSFRegex.Match) -> Swift.Bool)
+  #endif
+  @objc deinit
+}
+extension SpallaSDK.DSFRegex {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func stringByReplacingMatches(in text: Swift.String, withEscapedTemplateString escapedTemplate: Swift.String, range: Swift.Range<Swift.String.Index>? = nil, options: Foundation.NSRegularExpression.MatchingOptions = []) -> Swift.String
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func stringByReplacingMatches(in text: Swift.String, with string: Swift.String, range: Swift.Range<Swift.String.Index>? = nil, options: Foundation.NSRegularExpression.MatchingOptions = []) -> Swift.String
+  #endif
+}
+extension SpallaSDK.DSFRegex {
+  public struct Matches {
+    public let text: Swift.String
+    public var textRange: Swift.Range<Swift.String.Index> {
+      get
+    }
+    public let pattern: Swift.String
+    public let matches: [SpallaSDK.DSFRegex.Match]
+    public var count: Swift.Int {
+      get
+    }
+    public var isEmpty: Swift.Bool {
+      get
+    }
+    public subscript(index: Swift.Int) -> SpallaSDK.DSFRegex.Match {
+      get
+    }
+    public var isExactMatch: Swift.Bool {
+      get
+    }
+  }
+}
+extension SpallaSDK.DSFRegex.Matches {
+  public func textMatching() -> [Swift.String]
+  public func text(for match: SpallaSDK.DSFRegex.Match) -> Swift.String
+  public func text(for capture: SpallaSDK.DSFRegex.Capture) -> Swift.String
+  public func text(for captures: [SpallaSDK.DSFRegex.Capture]) -> [Swift.String]
+  public func text(forCapturesIn match: SpallaSDK.DSFRegex.Match) -> [Swift.String]
+  public func text(match: Swift.Int) -> Swift.String
+  public func text(match: Swift.Int, capture: Swift.Int) -> Swift.String
+}
+extension SpallaSDK.DSFRegex.Matches : Swift.Sequence {
+  public func makeIterator() -> SpallaSDK.DSFRegex.Matches.MatchIterator
+  public struct MatchIterator : Swift.IteratorProtocol {
+    public typealias Element = SpallaSDK.DSFRegex.Match
+    #if compiler(>=5.3) && $NonescapableTypes
+    public mutating func next() -> SpallaSDK.DSFRegex.Match?
+    #endif
+  }
+  public typealias Element = SpallaSDK.DSFRegex.Matches.MatchIterator.Element
+  public typealias Iterator = SpallaSDK.DSFRegex.Matches.MatchIterator
+}
+extension SpallaSDK.DSFRegex {
+  public struct Match {
+    public let range: Swift.Range<Swift.String.Index>
+    public let captures: [SpallaSDK.DSFRegex.Capture]
+    public func captureString(for index: Swift.Int) -> Swift.Substring
+    public func captureStrings() -> [Swift.Substring]
+  }
+}
+extension SpallaSDK.DSFRegex {
+  public typealias Capture = Swift.Range<Swift.String.Index>
+}
+extension Swift.String {
+  public func hasMatch(_ regex: SpallaSDK.DSFRegex) -> Swift.Bool
+  public func matches(for regex: SpallaSDK.DSFRegex) -> SpallaSDK.DSFRegex.Matches
+}
+extension SpallaSDK.DSFRegex {
+  public struct Cursor {
+    public let match: SpallaSDK.DSFRegex.Match
+    @inlinable public var range: Swift.Range<Swift.String.Index> {
+      get {
+			return self.match.range
+		}
+    }
+    @inlinable public func nsRange(_ text: Swift.String) -> Foundation.NSRange {
+			return NSRange(self.range, in: text)
+		}
+    @inlinable internal func describeRange(in string: Swift.String) {
+			Swift.print("\(self.nsRange(string)) -> '\(string[self.match.range])'")
+		}
+  }
+}
+extension Swift.String {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func firstMatch(for regex: SpallaSDK.DSFRegex, startingAt startIndex: Swift.String.Index? = nil, options: Foundation.NSRegularExpression.MatchingOptions = []) -> SpallaSDK.DSFRegex.Cursor?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func nextMatch(for cursor: SpallaSDK.DSFRegex.Cursor, loop: Swift.Bool = false, startingAt startIndex: Swift.String.Index? = nil) -> SpallaSDK.DSFRegex.Cursor?
+  #endif
+}
+public protocol BytesReaderSource {
+  var hasMoreData: Swift.Bool { get }
+  var readPosition: Swift.Int { get }
+  func readData(count: Swift.Int) throws -> Foundation.Data
+  func readByte() throws -> Swift.UInt8
+  func readAllRemainingData() throws -> Foundation.Data
+  func rewind() throws
+  func seekSet(_ offset: Swift.Int) throws
+  func seekEnd(_ offset: Swift.Int) throws
+  func seek(_ offset: Swift.Int) throws
+}
+extension SpallaSDK.BytesReaderSource {
+  @inlinable @inline(__always) public func readBytes(count: Swift.Int) throws -> [Swift.UInt8] {
+		Array(try self.readData(count: count))
+	}
+}
+@_hasMissingDesignatedInitializers public class THEOplayerConnectorSideloadedSubtitle {
+  public static var SHOW_DEBUG_LOGS: Swift.Bool
+  @objc deinit
+}
+extension THEOplayerSDK.THEOplayer {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func setSourceWithSubtitles(source: THEOplayerSDK.SourceDescription?)
+  #endif
+}
+extension THEOplayerSDK.Cache {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func createTaskWithSubtitles(source: THEOplayerSDK.SourceDescription, parameters: THEOplayerSDK.CachingParameters?) -> (any THEOplayerSDK.CachingTask)?
+  #endif
+}
+@objc @_inheritsConvenienceInitializers public class SSTextTrackDescription : THEOplayerSDK.TextTrackDescription {
+  public struct WebVttTimestamp {
+    public var pts: Swift.String?
+    public var localTime: Swift.String?
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init(pts: Swift.String? = nil, localTime: Swift.String? = nil)
+    #endif
+  }
+  public var vttTimestamp: SpallaSDK.SSTextTrackDescription.WebVttTimestamp
+  public var automaticTimestampSyncEnabled: Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func extractSourceTimestamp(completion: @escaping (_ timestamp: SpallaSDK.SSTextTrackDescription.WebVttTimestamp, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  override public init(src: Swift.String, srclang: Swift.String, isDefault: Swift.Bool? = nil, kind: THEOplayerSDK.TextTrackKind? = nil, label: Swift.String? = nil, format: THEOplayerSDK.TextTrackFormat? = nil)
+  #endif
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
+extension UniformTypeIdentifiers.UTType {
+  public static var sub: UniformTypeIdentifiers.UTType {
+    get
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct SUB : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.SUB
+    public init(framerate: Swift.Double = 24.0)
+    public var framerate: Swift.Double
+  }
+}
+extension SpallaSDK.Subtitles.Coder.SUB {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.SUB {
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+}
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
+extension UniformTypeIdentifiers.UTType {
+  public static var srt: UniformTypeIdentifiers.UTType {
+    get
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct SRT : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.SRT
+    public init()
+  }
+}
+extension SpallaSDK.Subtitles.Coder.SRT {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.SRT {
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+}
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
+extension UniformTypeIdentifiers.UTType {
+  public static var ttml: UniformTypeIdentifiers.UTType {
+    get
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct TTML : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.TTML
+  }
+}
+extension SpallaSDK.Subtitles.Coder.TTML {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.TTML {
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+}
+extension SpallaSDK.Subtitles {
+  public struct Time : Swift.Hashable, Swift.Comparable, Swift.Codable, Swift.Equatable, Swift.CustomDebugStringConvertible {
+    public init(hour: Swift.UInt = 0, minute: Swift.UInt = 0, second: Swift.UInt = 0, millisecond: Swift.UInt = 0)
+    public init(timeInSeconds seconds: Swift.Double)
+    public var debugDescription: Swift.String {
+      get
+    }
+    public var text: Swift.String {
+      get
+    }
+    public let hour: Swift.UInt
+    public let minute: Swift.UInt
+    public let second: Swift.UInt
+    public let millisecond: Swift.UInt
+    public let timeInSeconds: Swift.Double
+    public func encode(to encoder: any Swift.Encoder) throws
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+    public init(from decoder: any Swift.Decoder) throws
+  }
+}
+extension SpallaSDK.Subtitles.Time {
+  public static func < (lhs: SpallaSDK.Subtitles.Time, rhs: SpallaSDK.Subtitles.Time) -> Swift.Bool
+  public static func == (lhs: SpallaSDK.Subtitles.Time, rhs: SpallaSDK.Subtitles.Time) -> Swift.Bool
+}
+extension SpallaSDK.Subtitles.Time {
+  public func timeshifting(by durationInSeconds: Swift.Double) -> SpallaSDK.Subtitles.Time
+  public static func + (left: SpallaSDK.Subtitles.Time, right: Swift.Double) -> SpallaSDK.Subtitles.Time
+  public static func - (left: SpallaSDK.Subtitles.Time, right: Swift.Double) -> SpallaSDK.Subtitles.Time
+}
+extension SpallaSDK.Subtitles.Time {
+  public init(time: CoreMedia.CMTime)
+  public var cmTime: CoreMedia.CMTime {
+    get
+  }
+}
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
+extension UniformTypeIdentifiers.UTType {
+  public static var vtt: UniformTypeIdentifiers.UTType {
+    get
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct VTT : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.VTT
+    public init()
+  }
+}
+extension SpallaSDK.Subtitles.Coder.VTT {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.VTT {
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct CSV : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.CSV
+    public enum Field {
+      case identifier(title: Swift.String)
+      case position(title: Swift.String)
+      case startTime(title: Swift.String)
+      case startTimeInSeconds(title: Swift.String)
+      case endTime(title: Swift.String)
+      case endTimeInSeconds(title: Swift.String)
+      case durationInSeconds(title: Swift.String)
+      case speaker(title: Swift.String)
+      case text(title: Swift.String)
+    }
+    public static let DefaultFields: [SpallaSDK.Subtitles.Coder.CSV.Field]
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init(fields: [SpallaSDK.Subtitles.Coder.CSV.Field] = Subtitles.Coder.CSV.DefaultFields, delimiter: TinyCSV.TinyCSV.Delimiter = .comma, fieldEscapeCharacter: Swift.Character? = nil, commentCharacter: Swift.Character? = nil, headerLineCount: Swift.UInt? = nil, exportColumnHeaders: Swift.Bool = true)
+    #endif
+  }
+}
+extension SpallaSDK.Subtitles.Coder.CSV {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.CSV {
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+}
+public struct Subtitles : Swift.Equatable, Swift.Codable {
+  public static var empty: SpallaSDK.Subtitles
+  public var isEmpty: Swift.Bool {
+    get
+  }
+  public let cues: [SpallaSDK.Subtitles.Cue]
+  public init(_ cues: [SpallaSDK.Subtitles.Cue])
+  #if compiler(>=5.3) && $NonescapableTypes
+  @inlinable public func firstCue(containing secondsValue: Swift.Double) -> SpallaSDK.Subtitles.Cue? {
+		self.cues.first { $0.contains(timeInSeconds: secondsValue) }
+	}
+  #endif
+  public static func == (a: SpallaSDK.Subtitles, b: SpallaSDK.Subtitles) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension SpallaSDK.Subtitles {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @inlinable public func firstCue(containing time: SpallaSDK.Subtitles.Time) -> SpallaSDK.Subtitles.Cue? {
+		self.firstCue(containing: time.timeInSeconds)
+	}
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func nextCueIndex(for secondsValue: Swift.Double) -> Swift.Int?
+  #endif
+  public struct CueTypeResult : Swift.Hashable {
+    public let isInsideCue: Swift.Bool
+    public let cueIndex: Swift.Int
+    public static func == (a: SpallaSDK.Subtitles.CueTypeResult, b: SpallaSDK.Subtitles.CueTypeResult) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func cueType(for secondsValue: Swift.Double) -> SpallaSDK.Subtitles.CueTypeResult?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @inlinable public var firstCue: SpallaSDK.Subtitles.Cue? {
+    get { self.cues.first }
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @inlinable public var lastCue: SpallaSDK.Subtitles.Cue? {
+    get { self.cues.last }
+  }
+  #endif
+}
+extension SpallaSDK.Subtitles {
+  public init(fileURL: Foundation.URL, encoding: Swift.String.Encoding) throws
+  public init(content: Swift.String, expectedExtension: Swift.String) throws
+  public init(data: Foundation.Data, expectedExtension: Swift.String, encoding: Swift.String.Encoding) throws
+}
+extension SpallaSDK.Subtitles {
+  public static func encode(_ subtitles: SpallaSDK.Subtitles, fileExtension: Swift.String) throws -> Swift.String
+  public static func encode(_ subtitles: SpallaSDK.Subtitles, fileExtension: Swift.String, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  @inlinable public func encode(fileExtension: Swift.String) throws -> Swift.String {
+		try Self.encode(self, fileExtension: fileExtension)
+	}
+  public func encode(fileExtension: Swift.String, encoding: Swift.String.Encoding) throws -> Foundation.Data
+}
+extension SpallaSDK.Subtitles {
+  public var positionSorted: SpallaSDK.Subtitles {
+    get
+  }
+  public var startTimeSorted: SpallaSDK.Subtitles {
+    get
+  }
+  public var text: [Swift.String] {
+    get
+  }
+  public var uniqueSpeakers: Swift.Set<Swift.String> {
+    get
+  }
+}
+extension SpallaSDK.Subtitles {
+  public func timeShifting(by durationInSeconds: Swift.Double, at timeInSeconds: Swift.Double = 0) -> SpallaSDK.Subtitles
+}
+extension SpallaSDK.Subtitles {
+  public func removingEmptyCues() -> SpallaSDK.Subtitles
+  public func setIncrementingPositionValues() -> SpallaSDK.Subtitles
+}
+extension SpallaSDK.Subtitles {
+  public func indexesOfInvalidCues() -> [Swift.Int]
+  public func removingInvalidCues() -> SpallaSDK.Subtitles
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func cueIndex(forPosition pos: Swift.Int) -> Swift.Int?
+  #endif
+  @inlinable public func cuesOfZeroLength() -> [SpallaSDK.Subtitles.Cue] {
+		self.cues.filter { $0.isZeroLength() }
+	}
+}
+extension Swift.Array where Element == Swift.String {
+  @inlinable internal func removingEmptyLines() -> Swift.Array<Element> {
+		self.compactMap {
+			if $0.isEmpty { return nil }
+			else { return $0 }
+		}
+	}
+}
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
+extension UniformTypeIdentifiers.UTType {
+  public static var podcastsIndex: UniformTypeIdentifiers.UTType {
+    get
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct PodcastsIndex : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable, Swift.Codable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.PodcastsIndex
+    public init()
+    public init(version: Swift.String, segments: [SpallaSDK.Subtitles.Coder.PodcastsIndex.Segment])
+    public struct Segment : Swift.Codable {
+      public func encode(to encoder: any Swift.Encoder) throws
+      public init(from decoder: any Swift.Decoder) throws
+    }
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+}
+extension SpallaSDK.Subtitles.Coder.PodcastsIndex {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.PodcastsIndex {
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+}
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
+extension UniformTypeIdentifiers.UTType {
+  public static var substationalpha: UniformTypeIdentifiers.UTType {
+    get
+  }
+  public static var advancedsubstationalpha: UniformTypeIdentifiers.UTType {
+    get
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct SubStationAlpha : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.SubStationAlpha
+    public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+    public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+    public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+    public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct AdvancedSSA : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.AdvancedSSA
+  }
+}
+extension SpallaSDK.Subtitles.Coder.AdvancedSSA {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.AdvancedSSA {
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+}
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
+extension UniformTypeIdentifiers.UTType {
+  public static var lrc: UniformTypeIdentifiers.UTType {
+    get
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct LRC : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public enum TimeFormat : Swift.CaseIterable {
+      case minutesSecondsHundredths
+      case minutesSecondsMilliseconds
+      public static func == (a: SpallaSDK.Subtitles.Coder.LRC.TimeFormat, b: SpallaSDK.Subtitles.Coder.LRC.TimeFormat) -> Swift.Bool
+      public typealias AllCases = [SpallaSDK.Subtitles.Coder.LRC.TimeFormat]
+      nonisolated public static var allCases: [SpallaSDK.Subtitles.Coder.LRC.TimeFormat] {
+        get
+      }
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.LRC
+    public let timeFormat: SpallaSDK.Subtitles.Coder.LRC.TimeFormat
+    public init(timeFormat: SpallaSDK.Subtitles.Coder.LRC.TimeFormat = .minutesSecondsHundredths)
+  }
+}
+extension SpallaSDK.Subtitles.Coder.LRC {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.LRC {
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+}
+extension Swift.BinaryFloatingPoint {
+  @inlinable internal func clamped(_ range: Swift.ClosedRange<Self>) -> Self {
+		max(range.lowerBound, min(range.upperBound, self))
+	}
+}
+extension Swift.ExpressibleByIntegerLiteral where Self : Swift.Strideable {
+  @inlinable internal func clamped(_ range: Swift.ClosedRange<Self>) -> Self {
+		max(range.lowerBound, min(range.upperBound, self))
+	}
+}
+public protocol SubtitlesCodable {
+  static var extn: Swift.String { get }
+  static func Create() -> Self
+  func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+}
+public protocol SubtitlesTextCodable {
+  func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+  func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.SubtitlesCodable {
+  public var extn: Swift.String {
+    get
+  }
+  public func decode(fileURL: Foundation.URL, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+}
+extension SpallaSDK.Subtitles {
+  @_hasMissingDesignatedInitializers public class Coder {
+    @objc deinit
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func coder(fileExtension: Swift.String) -> (any SpallaSDK.SubtitlesCodable)?
+  #endif
+}
+extension SpallaSDK.Subtitles.Time {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(timeString: Swift.String)
+  #endif
+}
+extension SpallaSDK.Subtitles {
+  public typealias CueIdentifier = SpallaSDK.Identifier<SpallaSDK.Subtitles.Cue, Foundation.UUID>
+  public struct Cue : Swift.Equatable, Swift.Identifiable, Swift.Codable {
+    public let id: SpallaSDK.Subtitles.CueIdentifier
+    public let identifier: Swift.String?
+    public let position: Swift.Int?
+    public let startTime: SpallaSDK.Subtitles.Time
+    public let endTime: SpallaSDK.Subtitles.Time
+    public let text: Swift.String
+    public let speaker: Swift.String?
+    @inlinable public var startTimeInSeconds: Swift.Double {
+      get { self.startTime.timeInSeconds }
+    }
+    @inlinable public var endTimeInSeconds: Swift.Double {
+      get { self.endTime.timeInSeconds }
+    }
+    @inlinable public var duration: Swift.Double {
+      get { self.endTimeInSeconds - self.startTimeInSeconds }
+    }
+    @inlinable public var isValidTime: Swift.Bool {
+      get { self.startTimeInSeconds >= 0 && self.duration > 0 }
+    }
+    public static func == (lhs: SpallaSDK.Subtitles.Cue, rhs: SpallaSDK.Subtitles.Cue) -> Swift.Bool
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init(identifier: Swift.String? = nil, position: Swift.Int? = nil, startTime: SpallaSDK.Subtitles.Time, endTime: SpallaSDK.Subtitles.Time, text: Swift.String, speaker: Swift.String? = nil)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init(identifier: Swift.String? = nil, position: Swift.Int? = nil, startTimeInSeconds: Swift.Double, endTimeInSeconds: Swift.Double, text: Swift.String, speaker: Swift.String? = nil)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init(identifier: Swift.String? = nil, position: Swift.Int? = nil, startTime: SpallaSDK.Subtitles.Time, duration: Swift.Double, text: Swift.String, speaker: Swift.String? = nil)
+    #endif
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init(identifier: Swift.String? = nil, position: Swift.Int? = nil, startTime: Swift.Double, duration: Swift.Double, text: Swift.String, speaker: Swift.String? = nil)
+    #endif
+    @inlinable public func contains(timeInSeconds seconds: Swift.Double) -> Swift.Bool {
+			seconds >= self.startTimeInSeconds && seconds <= self.endTimeInSeconds
+		}
+    @inlinable public func contains(time: SpallaSDK.Subtitles.Time) -> Swift.Bool {
+			self.contains(timeInSeconds: time.timeInSeconds)
+		}
+    @inlinable public func startsAfter(timeInSeconds seconds: Swift.Double) -> Swift.Bool {
+			self.endTimeInSeconds > seconds
+		}
+    @inlinable public func startsAfter(time: SpallaSDK.Subtitles.Time) -> Swift.Bool {
+			self.startsAfter(timeInSeconds: time.timeInSeconds)
+		}
+    @inlinable public func isZeroLength() -> Swift.Bool {
+			self.startTime == self.endTime
+		}
+    public typealias ID = SpallaSDK.Subtitles.CueIdentifier
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
+  }
+}
+extension SpallaSDK.Subtitles.Cue {
+  public func timeshifting(by durationInSeconds: Swift.Double) -> SpallaSDK.Subtitles.Cue
+  public func inserting(_ durationInSeconds: Swift.Double, at timeInSeconds: Swift.Double) -> SpallaSDK.Subtitles.Cue
+  public func inserting(durationInSeconds: Swift.Double) -> SpallaSDK.Subtitles.Cue
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct JSON : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.JSON
+    public init()
+  }
+}
+extension SpallaSDK.Subtitles.Coder.JSON {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.JSON {
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+}
+public struct Identifier<ObjectType, ValueType> : Swift.Hashable where ValueType : Swift.Decodable, ValueType : Swift.Encodable, ValueType : Swift.Hashable {
+  public static func == (a: SpallaSDK.Identifier<ObjectType, ValueType>, b: SpallaSDK.Identifier<ObjectType, ValueType>) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension SpallaSDK.Identifier : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
+extension UniformTypeIdentifiers.UTType {
+  public static var sbv: UniformTypeIdentifiers.UTType {
+    get
+  }
+}
+extension SpallaSDK.Subtitles.Coder {
+  public struct SBV : SpallaSDK.SubtitlesCodable, SpallaSDK.SubtitlesTextCodable {
+    public static var extn: Swift.String {
+      get
+    }
+    public static func Create() -> SpallaSDK.Subtitles.Coder.SBV
+    public init()
+  }
+}
+extension SpallaSDK.Subtitles.Coder.SBV {
+  public func encode(subtitles: SpallaSDK.Subtitles, encoding: Swift.String.Encoding) throws -> Foundation.Data
+  public func encode(subtitles: SpallaSDK.Subtitles) throws -> Swift.String
+}
+extension SpallaSDK.Subtitles.Coder.SBV {
+  public func decode(_ data: Foundation.Data, encoding: Swift.String.Encoding) throws -> SpallaSDK.Subtitles
+  public func decode(_ content: Swift.String) throws -> SpallaSDK.Subtitles
+}
+public enum SubTitlesError : Swift.Error {
+  case unsupportedFileType(Swift.String)
+  case invalidFile
+  case unexpectedEOF
+  case invalidEncoding
+  case invalidPosition(Swift.Int)
+  case invalidTime(Swift.Int)
+  case missingText(Swift.Int)
+  case unexpectedEndOfCue(Swift.Int)
+  case coderGeneratesBinaryContent
+  case coderDoesntSupportEncoding
+  case timeTooLargeToExport(SpallaSDK.Subtitles.Cue)
+}
 public struct VideoMetadata {
   public let isLive: Swift.Bool
   public let duration: Foundation.TimeInterval
@@ -236,4 +1460,14 @@ public class PlayerController : Combine.ObservableObject {
   #endif
   @objc deinit
 }
+extension SpallaSDK.BytesReader.ReaderError : Swift.Equatable {}
+extension SpallaSDK.BytesReader.ReaderError : Swift.Hashable {}
+extension SpallaSDK.BytesWriter.WriterError : Swift.Equatable {}
+extension SpallaSDK.BytesWriter.WriterError : Swift.Hashable {}
+extension SpallaSDK.BytesParser.Endianness : Swift.Equatable {}
+extension SpallaSDK.BytesParser.Endianness : Swift.Hashable {}
+extension SpallaSDK.BytesReader.Seek : Swift.Equatable {}
+extension SpallaSDK.BytesReader.Seek : Swift.Hashable {}
+extension SpallaSDK.Subtitles.Coder.LRC.TimeFormat : Swift.Equatable {}
+extension SpallaSDK.Subtitles.Coder.LRC.TimeFormat : Swift.Hashable {}
 extension SpallaSDK.SpallaPlayerSwiftUI : Swift.Sendable {}

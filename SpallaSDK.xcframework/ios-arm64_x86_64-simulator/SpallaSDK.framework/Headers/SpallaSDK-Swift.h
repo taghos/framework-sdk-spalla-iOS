@@ -281,6 +281,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import THEOplayerSDK;
 @import UIKit;
 #endif
 
@@ -303,6 +304,11 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+
+/// A subclass of <code>TextTrackDescription</code> which extends and adds additional functionality.
+SWIFT_RESILIENT_CLASS("_TtC9SpallaSDK22SSTextTrackDescription")
+@interface SSTextTrackDescription : TextTrackDescription
+@end
 
 @class NSString;
 @class NSBundle;
@@ -610,6 +616,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import THEOplayerSDK;
 @import UIKit;
 #endif
 
@@ -632,6 +639,11 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+
+/// A subclass of <code>TextTrackDescription</code> which extends and adds additional functionality.
+SWIFT_RESILIENT_CLASS("_TtC9SpallaSDK22SSTextTrackDescription")
+@interface SSTextTrackDescription : TextTrackDescription
+@end
 
 @class NSString;
 @class NSBundle;

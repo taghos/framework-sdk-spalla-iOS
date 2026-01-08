@@ -14,8 +14,11 @@ let package = Package(
             targets: ["SpallaSDK", "SpallaFramework"])
     ],
     dependencies: [
-        .package(url: "https://github.com/THEOplayer/theoplayer-sdk-apple.git", .upToNextMajor(from: "9.8.2")),
-        .package(url: "https://github.com/SRGSSR/google-cast-sdk.git", .upToNextMajor(from: "4.8.3"))
+        .package(url: "https://github.com/THEOplayer/theoplayer-sdk-apple.git", .upToNextMajor(from: "10.7.0")),
+        .package(url: "https://github.com/SRGSSR/google-cast-sdk.git", .upToNextMajor(from: "4.8.3")),
+        .package(url: "https://github.com/httpswift/swifter.git", .upToNextMajor(from: "1.5.0")),
+        .package(url: "https://github.com/dagronf/TinyCSV", .upToNextMajor(from: "2.0.0")),
+
     ],
     targets: [
         .target(
@@ -23,7 +26,9 @@ let package = Package(
             dependencies: [
                 .product(name: "THEOplayerSDK", package: "theoplayer-sdk-apple"),
                 .product(name: "THEOplayerGoogleCastIntegration", package: "theoplayer-sdk-apple"),
-                .product(name: "GoogleCast", package: "google-cast-sdk")
+                .product(name: "GoogleCast", package: "google-cast-sdk"),
+                .product(name: "Swifter", package: "swifter"),
+                .product(name: "TinyCSV", package: "TinyCSV"),
             ],
             path: "Sources"
             

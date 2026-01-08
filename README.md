@@ -24,7 +24,7 @@ Once you have your Swift package set up, adding SpallaSDK as a dependency is as 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "2.2.5"))
+    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "2.3.0"))
 ]
 ```
 
@@ -155,6 +155,3 @@ This will enable all analytics on the Spalla Player automatically. No Analytics 
 
 - App crashes on the simulator
 -- support for iOS simulators on ARM64 were only added after version 2.0. You can either upgrade, or test on a physical device. 
-
-- Subtitles are not working
--- subtitle support is still missing from 2.+ versions. Please use 1.X versions if you need it.
