@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		xvVxxCAMnZkFubCB3STwvNuqXpI=
+		T6HjB4bKeqEzMh9bKdIITa5hGnI=
 		</data>
 		<key>Headers/SpallaSDK-Swift.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ACqYCfqTISEHwD+a2edTxFzSHUA=
+		J3a/AQo3XTieA4y8bnSQ3jVM8UU=
 		</data>
 		<key>Intro Bold Regular.ttf</key>
 		<data>
@@ -30,19 +30,19 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		5B3RjCib/ar2kvijvyaCP6ysQQ8=
+		oyBxPjqRRd1txLHmkkna4x8bd+A=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		8ms9peLxcBgPZARp2tckmQtCkt4=
+		+VcixirGHSgnPjGb+vPlRa/SUfI=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		joSWR8Z9hQSpct1zwFZJSZUYBvs=
+		9dMQK8KFd4EpRGjaW0fjA2o0M14=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		9DBsLkbxOYWYUvl57fEjde+V6T0=
+		0r2lC66C7/3UuCNrGaMW7LPHtO4=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -50,19 +50,19 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		sXPHoIg03omEGMMImkhYMGq8RHQ=
+		/0Lf4ubeJ5TLjcKfcJfHadnMZXI=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		AARPUjYHZorPChsyNZOVIznaTVA=
+		X35E9MPIDSZZ3t6m8KcumndZGUA=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		aQPPy3xBLvNVYsuk7EaaYNqX5m8=
+		Dh+/tkqJmzpfUZrczxCgVP40gGM=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Ex5K7PlMwGJWMYCXkd9zVGe8cK4=
+		H0RrJxNR/KPL+2RFzx3lUU2Hw+w=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -111,7 +111,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Yqo40UFuA7RRwj6IyfOt6ueAuv+FQQeF3eF80Z3Z0M0=
+			7fFkqCLARGEGMrrnpEtT1l3E7sZmKyhXOupEShkUrz0=
 			</data>
 		</dict>
 		<key>Headers/SpallaSDK-Swift.h</key>
@@ -146,28 +146,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jfygMjK8eC3PcojM4IX9vk/+trvVVh/1kQPOtRZNceg=
+			pmdjypRkEfz6g9It2jjlSKuDDoQbw0vDQtm4hgaFkIE=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cxqM5UwE/AIPaRmvu6cRxC9sy4YailYKaW47l4NDeew=
+			ahlWQ6IFhpuyTo48zAJptAXS60Ts0DKD/MyjY93CKt0=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			L2hEn2xaWCngjWMnMIN9XwqSrZxcS3ahwTYe8cuEtVg=
+			yKsmP3ylZU91yKkF39vqt0j15ueuW0oypz5+DIKlh/4=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LJVV5NjDPP0ngPXT4EFQ6SOdEiCsqaxDxApYUPGdLDY=
+			ZTZlvJ1Xi3y05W0MuuriIAO6kLh1SHBupXveaBcDGa8=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -181,28 +181,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			iWNT0k7QUDOay72d8GpSpOghWGxFaMHl0mDwaPLHjJQ=
+			yfTmVHbmJXogWtuIwsuL1QUSZNAYgbCLe7TcnkZJONU=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Flj8/bZLj/eue4AOFBJP9eI9wvnI/TwHHuXN1/kI7u4=
+			5+Nu5QKdGcedjS/Ey3yqoy36Myx/fYrTL7ouLktxnoQ=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Mms/mtSJ1JfHz1e+crUBEvEj7qIvkc1CW80BeN8Z3yA=
+			+6HebzG+h6Mk3ULv2kyYY1nvGRM54nhPxhj1RZMapqY=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6t7i6cAnZstmUbbCacFMUt4onA5tCdkkYQQPzpty5pI=
+			/60wl4wlw9H0dSixHVuPxlwMFYHJoBMFHk4G6a0+ZUI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
