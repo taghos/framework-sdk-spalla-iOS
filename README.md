@@ -6,7 +6,7 @@ Spalla SDK contains a player solution that can automatically handle any content 
 
 ### Pre-requisites
 
-SpallaSDK requires iOS 14. 
+SpallaSDK requires iOS 15.1. 
 
 ### Cocoapods
 
@@ -24,7 +24,7 @@ Once you have your Swift package set up, adding SpallaSDK as a dependency is as 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "2.3.0"))
+    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "2.3.1"))
 ]
 ```
 
