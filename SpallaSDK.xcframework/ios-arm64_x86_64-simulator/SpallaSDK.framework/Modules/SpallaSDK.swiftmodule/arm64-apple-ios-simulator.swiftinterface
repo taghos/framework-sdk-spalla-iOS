@@ -12,7 +12,6 @@ import GoogleCast
 import Swift
 import SwiftUI
 import THEOplayerSDK
-import TinyCSV
 import UIKit
 import UniformTypeIdentifiers
 import _Concurrency
@@ -857,7 +856,7 @@ extension SpallaSDK.Subtitles.Coder {
     }
     public static let DefaultFields: [SpallaSDK.Subtitles.Coder.CSV.Field]
     #if compiler(>=5.3) && $NonescapableTypes
-    public init(fields: [SpallaSDK.Subtitles.Coder.CSV.Field] = Subtitles.Coder.CSV.DefaultFields, delimiter: TinyCSV.TinyCSV.Delimiter = .comma, fieldEscapeCharacter: Swift.Character? = nil, commentCharacter: Swift.Character? = nil, headerLineCount: Swift.UInt? = nil, exportColumnHeaders: Swift.Bool = true)
+    public init(fields: [SpallaSDK.Subtitles.Coder.CSV.Field] = Subtitles.Coder.CSV.DefaultFields, delimiter: SpallaSDK.TinyCSV.Delimiter = .comma, fieldEscapeCharacter: Swift.Character? = nil, commentCharacter: Swift.Character? = nil, headerLineCount: Swift.UInt? = nil, exportColumnHeaders: Swift.Bool = true)
     #endif
   }
 }
@@ -1237,6 +1236,46 @@ public enum SubTitlesError : Swift.Error {
   case coderGeneratesBinaryContent
   case coderDoesntSupportEncoding
   case timeTooLargeToExport(SpallaSDK.Subtitles.Cue)
+}
+public struct TinyCSV {
+}
+extension SpallaSDK.TinyCSV {
+  public struct Coder {
+    public init()
+  }
+}
+extension SpallaSDK.TinyCSV {
+  public typealias Delimiter = Swift.Character
+}
+extension Swift.Character {
+  public static let comma: SpallaSDK.TinyCSV.Delimiter
+  public static let semicolon: SpallaSDK.TinyCSV.Delimiter
+  public static let tab: SpallaSDK.TinyCSV.Delimiter
+  public static var allKnownDelimiters: [SpallaSDK.TinyCSV.Delimiter]
+}
+extension SpallaSDK.TinyCSV {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func detectSeparator(text: Swift.String) -> SpallaSDK.TinyCSV.Delimiter?
+  #endif
+}
+extension SpallaSDK.TinyCSV.Coder {
+  public func encode(csvdata: [[Swift.String]], delimiter: SpallaSDK.TinyCSV.Delimiter = .comma) -> Swift.String
+}
+extension SpallaSDK.TinyCSV.Coder {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func startDecoding(text: Swift.String, delimiter: SpallaSDK.TinyCSV.Delimiter? = nil, fieldEscapeCharacter: Swift.Character? = nil, commentCharacter: Swift.Character? = nil, headerLineCount: Swift.UInt? = nil, captureQuotedStringOverrunCharacters: Swift.Bool = false, progressCallback: ((Swift.Int) -> Swift.Void)? = nil, emitField: ((_ row: Swift.Int, _ column: Swift.Int, _ text: Swift.String) -> Swift.Bool)?, emitRecord: ((_ row: Swift.Int, _ columns: [Swift.String]) -> Swift.Bool)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func decode(text: Swift.String, delimiter: SpallaSDK.TinyCSV.Delimiter? = nil, fieldEscapeCharacter: Swift.Character? = nil, commentCharacter: Swift.Character? = nil, headerLineCount: Swift.UInt? = nil, captureQuotedStringOverrunCharacters: Swift.Bool = false, progressCallback: ((Swift.Int) -> Swift.Void)? = nil) -> any SpallaSDK.TinyCSVData
+  #endif
+}
+public protocol TinyCSVData {
+  var text: Swift.String { get }
+  var delimiter: SpallaSDK.TinyCSV.Delimiter { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var fieldEscapeCharacter: Swift.Character? { get }
+  #endif
+  var records: [[Swift.String]] { get }
 }
 public struct VideoMetadata {
   public let isLive: Swift.Bool

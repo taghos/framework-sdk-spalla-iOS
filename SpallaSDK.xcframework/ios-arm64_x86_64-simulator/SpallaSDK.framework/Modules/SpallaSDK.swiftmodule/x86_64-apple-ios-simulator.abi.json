@@ -10551,13 +10551,6 @@
       },
       {
         "kind": "Import",
-        "name": "TinyCSV",
-        "printedName": "TinyCSV",
-        "declKind": "Import",
-        "moduleName": "SpallaSDK"
-      },
-      {
-        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -19806,6 +19799,853 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "TinyCSV",
+        "printedName": "TinyCSV",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "Coder",
+            "printedName": "Coder",
+            "children": [
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Coder",
+                    "printedName": "SpallaSDK.TinyCSV.Coder",
+                    "usr": "s:9SpallaSDK7TinyCSVV5CoderV"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:9SpallaSDK7TinyCSVV5CoderVAEycfc",
+                "mangledName": "$s9SpallaSDK7TinyCSVV5CoderVAEycfc",
+                "moduleName": "SpallaSDK",
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "init_kind": "Designated"
+              },
+              {
+                "kind": "Function",
+                "name": "encode",
+                "printedName": "encode(csvdata:delimiter:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[[Swift.String]]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[Swift.String]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "hasDefaultArg": true,
+                    "usr": "s:SJ"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9SpallaSDK7TinyCSVV5CoderV6encode7csvdata9delimiterSSSaySaySSGG_SJtF",
+                "mangledName": "$s9SpallaSDK7TinyCSVV5CoderV6encode7csvdata9delimiterSSSaySaySSGG_SJtF",
+                "moduleName": "SpallaSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ],
+                "isFromExtension": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Function",
+                "name": "startDecoding",
+                "printedName": "startDecoding(text:delimiter:fieldEscapeCharacter:commentCharacter:headerLineCount:captureQuotedStringOverrunCharacters:progressCallback:emitField:emitRecord:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.UInt?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UInt",
+                        "printedName": "Swift.UInt",
+                        "usr": "s:Su"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "hasDefaultArg": true,
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((Swift.Int) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.Int) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Int",
+                            "printedName": "Swift.Int",
+                            "usr": "s:Si"
+                          }
+                        ]
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((Swift.Int, Swift.Int, Swift.String) -> Swift.Bool)?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.Int, Swift.Int, Swift.String) -> Swift.Bool",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Bool",
+                            "printedName": "Swift.Bool",
+                            "usr": "s:Sb"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Tuple",
+                            "printedName": "(Swift.Int, Swift.Int, Swift.String)",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Int",
+                                "printedName": "Swift.Int",
+                                "usr": "s:Si"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Int",
+                                "printedName": "Swift.Int",
+                                "usr": "s:Si"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((Swift.Int, [Swift.String]) -> Swift.Bool)?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.Int, [Swift.String]) -> Swift.Bool",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Bool",
+                            "printedName": "Swift.Bool",
+                            "usr": "s:Sb"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Tuple",
+                            "printedName": "(Swift.Int, [Swift.String])",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Int",
+                                "printedName": "Swift.Int",
+                                "usr": "s:Si"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Array",
+                                "printedName": "[Swift.String]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "String",
+                                    "printedName": "Swift.String",
+                                    "usr": "s:SS"
+                                  }
+                                ],
+                                "usr": "s:Sa"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9SpallaSDK7TinyCSVV5CoderV13startDecoding4text9delimiter20fieldEscapeCharacter07commentL015headerLineCount36captureQuotedStringOverrunCharacters16progressCallback9emitField0X6RecordySS_SJSgA2PSuSgSbySicSgSbSi_SiSStcSgSbSi_SaySSGtcSgtF",
+                "mangledName": "$s9SpallaSDK7TinyCSVV5CoderV13startDecoding4text9delimiter20fieldEscapeCharacter07commentL015headerLineCount36captureQuotedStringOverrunCharacters16progressCallback9emitField0X6RecordySS_SJSgA2PSuSgSbySicSgSbSi_SiSStcSgSbSi_SaySSGtcSgtF",
+                "moduleName": "SpallaSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ],
+                "isFromExtension": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Function",
+                "name": "decode",
+                "printedName": "decode(text:delimiter:fieldEscapeCharacter:commentCharacter:headerLineCount:captureQuotedStringOverrunCharacters:progressCallback:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TinyCSVData",
+                    "printedName": "any SpallaSDK.TinyCSVData",
+                    "usr": "s:9SpallaSDK11TinyCSVDataP"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.UInt?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UInt",
+                        "printedName": "Swift.UInt",
+                        "usr": "s:Su"
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "hasDefaultArg": true,
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "((Swift.Int) -> ())?",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.Int) -> ()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Int",
+                            "printedName": "Swift.Int",
+                            "usr": "s:Si"
+                          }
+                        ]
+                      }
+                    ],
+                    "hasDefaultArg": true,
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:9SpallaSDK7TinyCSVV5CoderV6decode4text9delimiter20fieldEscapeCharacter07commentK015headerLineCount36captureQuotedStringOverrunCharacters16progressCallbackAA0C7CSVData_pSS_SJSgA2OSuSgSbySicSgtF",
+                "mangledName": "$s9SpallaSDK7TinyCSVV5CoderV6decode4text9delimiter20fieldEscapeCharacter07commentK015headerLineCount36captureQuotedStringOverrunCharacters16progressCallbackAA0C7CSVData_pSS_SJSgA2OSuSgSbySicSgtF",
+                "moduleName": "SpallaSDK",
+                "declAttributes": [
+                  "RawDocComment"
+                ],
+                "isFromExtension": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Struct",
+            "usr": "s:9SpallaSDK7TinyCSVV5CoderV",
+            "mangledName": "$s9SpallaSDK7TinyCSVV5CoderV",
+            "moduleName": "SpallaSDK",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "detectSeparator",
+            "printedName": "detectSeparator(text:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Character?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9SpallaSDK7TinyCSVV15detectSeparator4textSJSgSS_tFZ",
+            "mangledName": "$s9SpallaSDK7TinyCSVV15detectSeparator4textSJSgSS_tFZ",
+            "moduleName": "SpallaSDK",
+            "static": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:9SpallaSDK7TinyCSVV",
+        "mangledName": "$s9SpallaSDK7TinyCSVV",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TinyCSVData",
+        "printedName": "TinyCSVData",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "text",
+            "printedName": "text",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9SpallaSDK11TinyCSVDataP4textSSvp",
+            "mangledName": "$s9SpallaSDK11TinyCSVDataP4textSSvp",
+            "moduleName": "SpallaSDK",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK11TinyCSVDataP4textSSvg",
+                "mangledName": "$s9SpallaSDK11TinyCSVDataP4textSSvg",
+                "moduleName": "SpallaSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : SpallaSDK.TinyCSVData>",
+                "sugared_genericSig": "<Self where Self : SpallaSDK.TinyCSVData>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "delimiter",
+            "printedName": "delimiter",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Character",
+                "printedName": "Swift.Character",
+                "usr": "s:SJ"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9SpallaSDK11TinyCSVDataP9delimiterSJvp",
+            "mangledName": "$s9SpallaSDK11TinyCSVDataP9delimiterSJvp",
+            "moduleName": "SpallaSDK",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK11TinyCSVDataP9delimiterSJvg",
+                "mangledName": "$s9SpallaSDK11TinyCSVDataP9delimiterSJvg",
+                "moduleName": "SpallaSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : SpallaSDK.TinyCSVData>",
+                "sugared_genericSig": "<Self where Self : SpallaSDK.TinyCSVData>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fieldEscapeCharacter",
+            "printedName": "fieldEscapeCharacter",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Character?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9SpallaSDK11TinyCSVDataP20fieldEscapeCharacterSJSgvp",
+            "mangledName": "$s9SpallaSDK11TinyCSVDataP20fieldEscapeCharacterSJSgvp",
+            "moduleName": "SpallaSDK",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK11TinyCSVDataP20fieldEscapeCharacterSJSgvg",
+                "mangledName": "$s9SpallaSDK11TinyCSVDataP20fieldEscapeCharacterSJSgvg",
+                "moduleName": "SpallaSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : SpallaSDK.TinyCSVData>",
+                "sugared_genericSig": "<Self where Self : SpallaSDK.TinyCSVData>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "records",
+            "printedName": "records",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[Swift.String]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9SpallaSDK11TinyCSVDataP7recordsSaySaySSGGvp",
+            "mangledName": "$s9SpallaSDK11TinyCSVDataP7recordsSaySaySSGGvp",
+            "moduleName": "SpallaSDK",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[[Swift.String]]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[Swift.String]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9SpallaSDK11TinyCSVDataP7recordsSaySaySSGGvg",
+                "mangledName": "$s9SpallaSDK11TinyCSVDataP7recordsSaySaySSGGvg",
+                "moduleName": "SpallaSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : SpallaSDK.TinyCSVData>",
+                "sugared_genericSig": "<Self where Self : SpallaSDK.TinyCSVData>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:9SpallaSDK11TinyCSVDataP",
+        "mangledName": "$s9SpallaSDK11TinyCSVDataP",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "SpallaSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "Import",
         "name": "AVFoundation",
         "printedName": "AVFoundation",
@@ -27949,6 +28789,437 @@
             "mangledName": "$ss8CopyableP"
           }
         ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Character",
+        "printedName": "Character",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "comma",
+            "printedName": "comma",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Character",
+                "printedName": "Swift.Character",
+                "usr": "s:SJ"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:SJ9SpallaSDKE5commaSJvpZ",
+            "mangledName": "$sSJ9SpallaSDKE5commaSJvpZ",
+            "moduleName": "SpallaSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:SJ9SpallaSDKE5commaSJvgZ",
+                "mangledName": "$sSJ9SpallaSDKE5commaSJvgZ",
+                "moduleName": "SpallaSDK",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "semicolon",
+            "printedName": "semicolon",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Character",
+                "printedName": "Swift.Character",
+                "usr": "s:SJ"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:SJ9SpallaSDKE9semicolonSJvpZ",
+            "mangledName": "$sSJ9SpallaSDKE9semicolonSJvpZ",
+            "moduleName": "SpallaSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:SJ9SpallaSDKE9semicolonSJvgZ",
+                "mangledName": "$sSJ9SpallaSDKE9semicolonSJvgZ",
+                "moduleName": "SpallaSDK",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "tab",
+            "printedName": "tab",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Character",
+                "printedName": "Swift.Character",
+                "usr": "s:SJ"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:SJ9SpallaSDKE3tabSJvpZ",
+            "mangledName": "$sSJ9SpallaSDKE3tabSJvpZ",
+            "moduleName": "SpallaSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:SJ9SpallaSDKE3tabSJvgZ",
+                "mangledName": "$sSJ9SpallaSDKE3tabSJvgZ",
+                "moduleName": "SpallaSDK",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "allKnownDelimiters",
+            "printedName": "allKnownDelimiters",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.Character]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:SJ9SpallaSDKE18allKnownDelimitersSaySJGvpZ",
+            "mangledName": "$sSJ9SpallaSDKE18allKnownDelimitersSaySJGvpZ",
+            "moduleName": "SpallaSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.Character]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:SJ9SpallaSDKE18allKnownDelimitersSaySJGvgZ",
+                "mangledName": "$sSJ9SpallaSDKE18allKnownDelimitersSaySJGvgZ",
+                "moduleName": "SpallaSDK",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.Character]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:SJ9SpallaSDKE18allKnownDelimitersSaySJGvsZ",
+                "mangledName": "$sSJ9SpallaSDKE18allKnownDelimitersSaySJGvsZ",
+                "moduleName": "SpallaSDK",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:SJ9SpallaSDKE18allKnownDelimitersSaySJGvMZ",
+                "mangledName": "$sSJ9SpallaSDKE18allKnownDelimitersSaySJGvMZ",
+                "moduleName": "SpallaSDK",
+                "static": true,
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:SJ",
+        "mangledName": "$sSJ",
+        "moduleName": "Swift",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ExpressibleByBuiltinExtendedGraphemeClusterLiteral",
+            "printedName": "_ExpressibleByBuiltinExtendedGraphemeClusterLiteral",
+            "usr": "s:s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP",
+            "mangledName": "$ss51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "printedName": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ExtendedGraphemeClusterLiteralType",
+                "printedName": "ExtendedGraphemeClusterLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s43ExpressibleByExtendedGraphemeClusterLiteralP",
+            "mangledName": "$ss43ExpressibleByExtendedGraphemeClusterLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ExpressibleByBuiltinUnicodeScalarLiteral",
+            "printedName": "_ExpressibleByBuiltinUnicodeScalarLiteral",
+            "usr": "s:s41_ExpressibleByBuiltinUnicodeScalarLiteralP",
+            "mangledName": "$ss41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByUnicodeScalarLiteral",
+            "printedName": "ExpressibleByUnicodeScalarLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "UnicodeScalarLiteralType",
+                "printedName": "UnicodeScalarLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s33ExpressibleByUnicodeScalarLiteralP",
+            "mangledName": "$ss33ExpressibleByUnicodeScalarLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "LosslessStringConvertible",
+            "printedName": "LosslessStringConvertible",
+            "usr": "s:s25LosslessStringConvertibleP",
+            "mangledName": "$ss25LosslessStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Comparable",
+            "printedName": "Comparable",
+            "usr": "s:SL",
+            "mangledName": "$sSL"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomReflectable",
+            "printedName": "CustomReflectable",
+            "usr": "s:s17CustomReflectableP",
+            "mangledName": "$ss17CustomReflectableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_CustomPlaygroundQuickLookable",
+            "printedName": "_CustomPlaygroundQuickLookable",
+            "usr": "s:s30_CustomPlaygroundQuickLookableP",
+            "mangledName": "$ss30_CustomPlaygroundQuickLookableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "TextOutputStreamable",
+            "printedName": "TextOutputStreamable",
+            "usr": "s:s20TextOutputStreamableP",
+            "mangledName": "$ss20TextOutputStreamableP"
+          }
+        ]
       }
     ],
     "json_format_version": 8
@@ -28895,35 +30166,35 @@
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/SwiftSubtitles\/coding\/CSV.swift",
       "kind": "StringLiteral",
-      "offset": 2730,
+      "offset": 2715,
       "length": 5,
       "value": "\"No.\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/SwiftSubtitles\/coding\/CSV.swift",
       "kind": "StringLiteral",
-      "offset": 2759,
+      "offset": 2744,
       "length": 13,
       "value": "\"Timecode In\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/SwiftSubtitles\/coding\/CSV.swift",
       "kind": "StringLiteral",
-      "offset": 2794,
+      "offset": 2779,
       "length": 14,
       "value": "\"Timecode Out\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/SwiftSubtitles\/coding\/CSV.swift",
       "kind": "StringLiteral",
-      "offset": 2827,
+      "offset": 2812,
       "length": 10,
       "value": "\"Subtitle\""
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/SwiftSubtitles\/coding\/CSV.swift",
       "kind": "BooleanLiteral",
-      "offset": 3620,
+      "offset": 3605,
       "length": 4,
       "value": "true"
     },
@@ -29031,6 +30302,104 @@
       "offset": 1932,
       "length": 73,
       "value": "\"^(\\d+):(\\d{1,2}):(\\d{1,2})\\.(\\d{3}),(\\d+):(\\d{2}):(\\d{1,2})\\.(\\d{3})$\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/TinyCSV+Delimiter.swift",
+      "kind": "StringLiteral",
+      "offset": 1355,
+      "length": 3,
+      "value": "\",\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/TinyCSV+Delimiter.swift",
+      "kind": "StringLiteral",
+      "offset": 1427,
+      "length": 3,
+      "value": "\";\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/TinyCSV+Delimiter.swift",
+      "kind": "StringLiteral",
+      "offset": 1487,
+      "length": 4,
+      "value": "\"\t\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/private\/TinyCSV+Decoder.swift",
+      "kind": "Array",
+      "offset": 1329,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/private\/TinyCSV+Decoder.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1562,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/TinyCSV+Decode.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2162,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/TinyCSV+Decode.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3687,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/private\/TinyCSV+EventDrivenDecoder.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2277,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/private\/TinyCSV+EventDrivenDecoder.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2448,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/private\/TinyCSV+EventDrivenDecoder.swift",
+      "kind": "StringLiteral",
+      "offset": 2538,
+      "length": 3,
+      "value": "\"-\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/private\/TinyCSV+EventDrivenDecoder.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2561,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/private\/TinyCSV+EventDrivenDecoder.swift",
+      "kind": "Array",
+      "offset": 2588,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/private\/TinyCSV+EventDrivenDecoder.swift",
+      "kind": "StringLiteral",
+      "offset": 2605,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/TinyCSV\/private\/TinyCSV+EventDrivenDecoder.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2830,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/rogerioshimizu\/Documents\/Work\/BUNKER79\/Spalla\/spalla-sdk\/SpallaSDK\/SpallaSDK\/THEOplayerConnectorSideloadedSubtitle\/Parsers\/PlaylistParser.swift",
