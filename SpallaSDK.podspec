@@ -11,6 +11,5 @@ Pod::Spec.new do |s|
     s.vendored_frameworks = 'SpallaSDK.xcframework'
     s.dependency 'THEOplayerSDK-core', '~> 10.7.0'
     s.dependency 'THEOplayer-Integration-GoogleCast', '~> 10'
-    s.dependency 'TinyCSV', '~> 1.0.0'
     s.dependency 'Swifter', '~> 1.5.0'
   end

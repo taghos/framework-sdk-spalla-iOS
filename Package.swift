@@ -28,7 +28,6 @@ let package = Package(
                 .product(name: "THEOplayerGoogleCastIntegration", package: "theoplayer-sdk-apple"),
                 .product(name: "GoogleCast", package: "google-cast-sdk"),
                 .product(name: "Swifter", package: "swifter"),
-                .product(name: "TinyCSV", package: "TinyCSV"),
             ],
             path: "Sources"
             
