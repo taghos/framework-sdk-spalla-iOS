@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name THEOplayerSDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name THEOplayerSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
 import AVFoundation
 import AVKit
 import Combine
@@ -492,15 +492,9 @@ public struct GenericSwiftError : THEOplayerSDK.THEOBaseError {
     get
   }
 }
-#if compiler(>=5.3) && $NoncopyableGenerics
 extension Swift.Optional where Wrapped == Swift.Int {
   @_spi(Core) public func toDouble() -> Swift.Double?
 }
-#else
-extension Swift.Optional where Wrapped == Swift.Int {
-  @_spi(Core) public func toDouble() -> Swift.Double?
-}
-#endif
 public enum Preload : Swift.Int {
   case none
   case auto
@@ -692,8 +686,8 @@ extension THEOplayerSDK.AdIntegration : Swift.Codable {
   @available(*, deprecated, message: "DVR is enabled by default, and is only available through the THEOlive integration")
   public var enableStreamingDVR: Swift.Bool?
   @_spi(Core) public var dvr: THEOplayerSDK.SourceDVRConfiguration? {
-    get
-    set
+    @_spi(Core) get
+    @_spi(Core) set
   }
   public var poster: Foundation.URL? {
     get
@@ -1302,6 +1296,7 @@ extension THEOplayerSDK.PresentationMode {
   }
 }
 extension THEOplayerSDK.THEOplayer {
+  @available(*, deprecated, message: "This API is deprecated. For manifest interception, please use the `NetworkAPI` instead. The API can be accessed from `player.network`.")
   public var developerSettings: (any THEOplayerSDK.DeveloperSettings)? {
     get
     set
@@ -1344,6 +1339,7 @@ public protocol Cache : AnyObject, THEOplayerSDK.EventDispatcherProtocol {
   func createTask(source: THEOplayerSDK.SourceDescription, parameters: THEOplayerSDK.CachingParameters?) -> (any THEOplayerSDK.CachingTask)?
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> any THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: any THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
+  @available(*, deprecated, message: "This API is deprecated. For manifest interception, please use the `NetworkAPI` instead. The API can be accessed from `cachingTask.network`.")
   var developerSettings: (any THEOplayerSDK.DeveloperSettings)? { get set }
 }
 public enum CacheStatus : Swift.Int {
@@ -1387,6 +1383,7 @@ public protocol CachingTask : THEOplayerSDK.EventDispatcherProtocol {
   func remove()
   func pause()
   var license: any THEOplayerSDK.CachingTaskLicense { get }
+  var network: any THEOplayerSDK.Network { get }
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> any THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: any THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
 }
@@ -1711,7 +1708,7 @@ public struct AudioTrackListEventTypes {
 }
 extension Foundation.Bundle {
   @_spi(Core) public static var isForTesting: Swift.Bool {
-    get
+    @_spi(Core) get
   }
 }
 @_spi(Core) @_inheritsConvenienceInitializers open class VideoTrackListImpl : THEOplayerSDK.MediaTrackListImpl<THEOplayerSDK.VideoTrackImpl>, THEOplayerSDK.VideoTrackList {
@@ -1731,10 +1728,13 @@ public struct TextTrackCueEventTypes {
   required convenience public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
+@available(*, deprecated, message: "This API is deprecated. For manifest interception, please use the `NetworkAPI` instead. The API can be accessed from `player.network` or `cachingTask.network`.")
 public protocol ManifestInterceptor : AVFoundation.AVAssetResourceLoaderDelegate {
   var customScheme: Swift.String { get }
 }
+@available(*, deprecated, message: "This API is deprecated. For manifest interception, please use the `NetworkAPI` instead. The API can be accessed from `player.network` or `cachingTask.network`.")
 public protocol DeveloperSettings {
+  @available(*, deprecated, message: "This API is deprecated. For manifest interception, please use the `NetworkAPI` instead. The API can be accessed from `player.network` or `cachingTask.network`.")
   var manifestInterceptor: (any THEOplayerSDK.ManifestInterceptor)? { get set }
 }
 @objc @_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
@@ -2636,13 +2636,8 @@ public enum DateRangeCustomAttributesError : Swift.Int, Swift.Error {
 @_spi(Core) extension THEOplayerSDK.SwitchingAsyncSequence : _Concurrency.AsyncSequence {
   @_spi(Core) public func makeAsyncIterator() -> _Concurrency.AsyncStream<THEOplayerSDK.SwitchingAsyncSequence<Seq>.Element>.AsyncIterator
   @_spi(Core) public typealias AsyncIterator = _Concurrency.AsyncStream<THEOplayerSDK.SwitchingAsyncSequence<Seq>.Element>.AsyncIterator
-  #if compiler(>=5.3) && $AssociatedTypeImplements
   @_spi(Core) @available(iOS 18.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, macOS 15.0, *)
   @_implements(_Concurrency.AsyncSequence, Failure) public typealias __AsyncSequence_Failure = _Concurrency.AsyncStream<THEOplayerSDK.SwitchingAsyncSequence<Seq>.Element>.Iterator.__AsyncIteratorProtocol_Failure
-  #else
-  @_spi(Core) @available(iOS 18.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, macOS 15.0, *)
-  public typealias __AsyncSequence_Failure = _Concurrency.AsyncStream<THEOplayerSDK.SwitchingAsyncSequence<Seq>.Element>.Iterator.__AsyncIteratorProtocol_Failure
-  #endif
 }
 @objc @_hasMissingDesignatedInitializers public class CachingTaskStateChangeEvent : THEOplayerSDK.CacheEvent {
   @objc deinit
@@ -2970,7 +2965,7 @@ public enum PictureInPictureCorner : Swift.Int {
 }
 extension Foundation.URLComponents {
   @_spi(Core) public var searchParams: [Foundation.URLQueryItem] {
-    get
+    @_spi(Core) get
   }
 }
 @_spi(Core) public protocol RemovableEventListenerProtocol {
@@ -3257,7 +3252,7 @@ public class VimondDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguratio
   }
 }
 @_spi(Core) extension Foundation.JSONEncoder {
-  @_spi(Core) public func encodeWithReplacingBackslashes<T>(_ value: T) throws -> Swift.String where T : Swift.Encodable
+  @_spi(Core) public func encodeToAscii<T>(_ value: T) throws -> Swift.String where T : Swift.Encodable
 }
 @objc @_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
 public class AxinomDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
@@ -3998,12 +3993,6 @@ public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
 extension AVFoundation.AVPlayerItem {
   @_spi(Core) @_Concurrency.MainActor @preconcurrency public func asyncSeek(to time: CoreMedia.CMTime) async throws
 }
-@_spi(Core) public class SerialQueue {
-  @_spi(Core) public typealias Work = () async -> Swift.Void
-  @_spi(Core) public init(bufferingPolicy: _Concurrency.AsyncStream<THEOplayerSDK.SerialQueue.Work>.Continuation.BufferingPolicy = .unbounded)
-  @_spi(Core) public func enqueue(_ work: @escaping THEOplayerSDK.SerialQueue.Work)
-  @_spi(Core) @objc deinit
-}
 extension Swift.Array {
   @_spi(Core) public func binarySearchInsertIndex(element: Element, comparator: (Element, Element) -> Swift.Int) throws -> Swift.Int
   @_spi(Core) public func getOrNil(_ index: Swift.Int) -> Element?
@@ -4097,8 +4086,8 @@ extension Swift.Array where Element : Swift.Equatable {
 }
 @_spi(Core) public struct TextTrackSnapshot {
   @_spi(Core) public struct IdentifyingProperties : Swift.Hashable {
-    @_spi(Core) public func hash(into hasher: inout Swift.Hasher)
     @_spi(Core) public static func == (a: THEOplayerSDK.TextTrackSnapshot.IdentifyingProperties, b: THEOplayerSDK.TextTrackSnapshot.IdentifyingProperties) -> Swift.Bool
+    @_spi(Core) public func hash(into hasher: inout Swift.Hasher)
     @_spi(Core) public var hashValue: Swift.Int {
       @_spi(Core) get
     }
@@ -4189,11 +4178,6 @@ public protocol BackgroundPlaybackDelegate : AnyObject {
 }
 @_spi(Core) extension Swift.Substring {
   @_spi(Core) public func dropLeading(character: Swift.Character) -> Swift.Substring
-}
-@_spi(Core) extension Swift.String {
-  @_spi(Core) public var unicodeEscaped: Swift.String {
-    @_spi(Core) get
-  }
 }
 public protocol AirPlay : THEOplayerSDK.EventDispatcherProtocol {
   var casting: Swift.Bool { get }
