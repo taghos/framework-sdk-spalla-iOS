@@ -1310,7 +1310,7 @@ public protocol SpallaPlayerListener : AnyObject {
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor public class SpallaPlayerViewController : UIKit.UIViewController {
   #if compiler(>=5.3) && $NonescapableTypes
-  @_Concurrency.MainActor public func setup(with contentId: Swift.String, hideUI: Swift.Bool = false, startTime: Swift.Double = 0, subtitle: Swift.String? = nil)
+  @_Concurrency.MainActor public func setup(with contentId: Swift.String, hideUI: Swift.Bool = false, startTime: Swift.Double = 0, subtitle: Swift.String? = nil, customImaParams: [Swift.String : Swift.String] = [:])
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor public func selectSubtitle(subtitle: Swift.String?)
@@ -1351,7 +1351,7 @@ public protocol SpallaPlayerListener : AnyObject {
   @_Concurrency.MainActor @preconcurrency public let contentId: Swift.String?
   @_Concurrency.MainActor @preconcurrency public let hideUI: Swift.Bool
   #if compiler(>=5.3) && $NonescapableTypes
-  @_Concurrency.MainActor @preconcurrency public init(contentId: Swift.String?, hideUI: Swift.Bool = false, startTime: Swift.Double = 0, subtitle: Swift.String? = nil, controller: SpallaSDK.PlayerController?)
+  @_Concurrency.MainActor @preconcurrency public init(contentId: Swift.String?, hideUI: Swift.Bool = false, startTime: Swift.Double = 0, subtitle: Swift.String? = nil, customImaParams: [Swift.String : Swift.String] = [:], controller: SpallaSDK.PlayerController?)
   #endif
   @_Concurrency.MainActor @preconcurrency public func makeUIViewController(context: SpallaSDK.SpallaPlayerSwiftUI.Context) -> SpallaSDK.SpallaPlayerViewController
   @_Concurrency.MainActor @preconcurrency public func updateUIViewController(_ uiViewController: SpallaSDK.SpallaPlayerViewController, context: SpallaSDK.SpallaPlayerSwiftUI.Context)
