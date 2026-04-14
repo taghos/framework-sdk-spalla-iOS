@@ -24,7 +24,7 @@ Once you have your Swift package set up, adding SpallaSDK as a dependency is as 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "2.6.0"))
+    .package(url: "https://github.com/taghos/framework-sdk-spalla-iOS", .upToNextMajor(from: "2.6.1"))
 ]
 ```
 
@@ -144,6 +144,13 @@ Spalla.shared.setSessionId(token: token)
 
 This will enable all analytics on the Spalla Player automatically. No Analytics will be recorded if the session id is not set.
 
+# Ads
+
+If your videos have ads on Spalla CMS, they will be automatically loaded for the player. If you need to pass custom parameters to it, use the customImaParams on the setup function. 
+
+```swift
+vc.setup(with: "{Spalla content_id}", customImaParams: ["genre": "sport"])
+```
 
 # Troubleshooting
 
