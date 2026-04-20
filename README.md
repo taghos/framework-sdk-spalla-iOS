@@ -152,6 +152,20 @@ If your videos have ads on Spalla CMS, they will be automatically loaded for the
 vc.setup(with: "{Spalla content_id}", customImaParams: ["genre": "sport"])
 ```
 
+You can also pass a custom ad, if you don't use ads on Spalla CMS. Use vast with offset, or vmap with null offset.
+
+```swift
+vc.setup(
+    with: "{Spalla content_id}", 
+    customAds: [
+                AdsModel(
+                    url: "{vast ad url}",
+                    offset: "start"
+                )
+            ]
+)
+```
+
 # Troubleshooting
 
 - After I added the SDK and tried to compile, Swift reported "Failed to build module SpallaSDK"
