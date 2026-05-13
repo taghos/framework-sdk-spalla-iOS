@@ -281,6 +281,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import AVKit;
 @import THEOplayerSDK;
 @import UIKit;
 #endif
@@ -323,6 +324,15 @@ SWIFT_CLASS("_TtC9SpallaSDK26SpallaPlayerViewController")
 @property (nonatomic, readonly) BOOL prefersHomeIndicatorAutoHidden;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class AVPictureInPictureController;
+@interface SpallaPlayerViewController (SWIFT_EXTENSION(SpallaSDK)) <AVPictureInPictureControllerDelegateExtended>
+- (void)pictureInPictureControllerDidStartPictureInPicture:(AVPictureInPictureController * _Nonnull)pictureInPictureController;
+- (void)pictureInPictureControllerDidStopPictureInPicture:(AVPictureInPictureController * _Nonnull)pictureInPictureController;
+- (void)pictureInPictureController:(AVPictureInPictureController * _Nonnull)pictureInPictureController failedToStartPictureInPictureWithError:(NSError * _Nonnull)error;
+- (void)pictureInPictureDidBecomePossible;
+- (void)pictureInPictureDidBecomeNotPossible;
 @end
 
 #endif
@@ -616,6 +626,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import AVKit;
 @import THEOplayerSDK;
 @import UIKit;
 #endif
@@ -658,6 +669,15 @@ SWIFT_CLASS("_TtC9SpallaSDK26SpallaPlayerViewController")
 @property (nonatomic, readonly) BOOL prefersHomeIndicatorAutoHidden;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class AVPictureInPictureController;
+@interface SpallaPlayerViewController (SWIFT_EXTENSION(SpallaSDK)) <AVPictureInPictureControllerDelegateExtended>
+- (void)pictureInPictureControllerDidStartPictureInPicture:(AVPictureInPictureController * _Nonnull)pictureInPictureController;
+- (void)pictureInPictureControllerDidStopPictureInPicture:(AVPictureInPictureController * _Nonnull)pictureInPictureController;
+- (void)pictureInPictureController:(AVPictureInPictureController * _Nonnull)pictureInPictureController failedToStartPictureInPictureWithError:(NSError * _Nonnull)error;
+- (void)pictureInPictureDidBecomePossible;
+- (void)pictureInPictureDidBecomeNotPossible;
 @end
 
 #endif
