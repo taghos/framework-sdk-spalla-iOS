@@ -1313,6 +1313,8 @@ public enum SpallaPlayerEvent {
   case adBreakBegin
   case adEnd
   case adBreakEnd
+  case enterPiP
+  case exitPiP
 }
 public protocol SpallaPlayerListener : AnyObject {
   func onEvent(event: SpallaSDK.SpallaPlayerEvent)
