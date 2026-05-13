@@ -3,6 +3,7 @@
 // swift-module-flags: -target arm64-apple-ios15.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name SpallaSDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.4
 import AVFoundation
+import AVKit
 import Combine
 import CoreMedia
 import DeveloperToolsSupport
@@ -16,6 +17,7 @@ import THEOplayerGoogleIMAIntegration
 import THEOplayerSDK
 import UIKit
 import UniformTypeIdentifiers
+import _AVKit_SwiftUI
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
@@ -1341,6 +1343,8 @@ public protocol SpallaPlayerListener : AnyObject {
   @_Concurrency.MainActor public func unmute()
   @_Concurrency.MainActor public func getCurrentTime(callback: @escaping (Foundation.TimeInterval) -> Swift.Void)
   @_Concurrency.MainActor public func setPlaybackRate(rate: Swift.Double)
+  @_Concurrency.MainActor public func enterPiP()
+  @_Concurrency.MainActor public func exitPip()
   @_Concurrency.MainActor public func unmount()
   @objc deinit
   @_Concurrency.MainActor @objc override dynamic public var prefersHomeIndicatorAutoHidden: Swift.Bool {
@@ -1352,6 +1356,13 @@ public protocol SpallaPlayerListener : AnyObject {
   #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @objc required dynamic public init?(coder: Foundation.NSCoder)
   #endif
+}
+extension SpallaSDK.SpallaPlayerViewController : @_Concurrency.MainActor THEOplayerSDK.AVPictureInPictureControllerDelegateExtended {
+  @_Concurrency.MainActor @objc dynamic public func pictureInPictureControllerDidStartPictureInPicture(_ pictureInPictureController: AVKit.AVPictureInPictureController)
+  @_Concurrency.MainActor @objc dynamic public func pictureInPictureControllerDidStopPictureInPicture(_ pictureInPictureController: AVKit.AVPictureInPictureController)
+  @_Concurrency.MainActor @objc dynamic public func pictureInPictureController(_ pictureInPictureController: AVKit.AVPictureInPictureController, failedToStartPictureInPictureWithError error: any Swift.Error)
+  @_Concurrency.MainActor @objc dynamic public func pictureInPictureDidBecomePossible()
+  @_Concurrency.MainActor @objc dynamic public func pictureInPictureDidBecomeNotPossible()
 }
 @_Concurrency.MainActor @preconcurrency public struct SpallaPlayerSwiftUI : SwiftUI.UIViewControllerRepresentable {
   public typealias UIViewControllerType = SpallaSDK.SpallaPlayerViewController
