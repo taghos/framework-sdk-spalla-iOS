@@ -10,6 +10,7 @@ import DeveloperToolsSupport
 import Foundation
 import GoogleCast
 import GoogleInteractiveMediaAds
+import ObjectiveC
 @_exported import SpallaSDK
 import Swift
 import SwiftUI
@@ -21,6 +22,7 @@ import _AVKit_SwiftUI
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+import ObjectiveC.runtime
 @_hasMissingDesignatedInitializers public class BytesParser {
   public static let BOMUTF8: [Swift.UInt8]
   public static let BOMUTF16LE: [Swift.UInt8]
