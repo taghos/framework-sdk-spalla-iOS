@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		UbduHl96ZqlJ6Vr1fydrlwEF57g=
+		ufPwjDoBohTogpVPJiWJWuid9gY=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		UbduHl96ZqlJ6Vr1fydrlwEF57g=
+		ufPwjDoBohTogpVPJiWJWuid9gY=
 		</data>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -139,7 +139,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			74UaUbkLzVLx8p0qlRtbpdHoAxVcY0UmXQbLMPIlnZw=
+			sfBBRTu8NkGaiJvVFmfwziThZUhgCV4TT9jLymz2ywI=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -174,7 +174,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			74UaUbkLzVLx8p0qlRtbpdHoAxVcY0UmXQbLMPIlnZw=
+			sfBBRTu8NkGaiJvVFmfwziThZUhgCV4TT9jLymz2ywI=
 			</data>
 		</dict>
 		<key>Modules/SpallaSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
