@@ -7,5 +7,4 @@ framework module SpallaSDK {
 
 module SpallaSDK.Swift {
   header "SpallaSDK-Swift.h"
-  requires objc
 }
