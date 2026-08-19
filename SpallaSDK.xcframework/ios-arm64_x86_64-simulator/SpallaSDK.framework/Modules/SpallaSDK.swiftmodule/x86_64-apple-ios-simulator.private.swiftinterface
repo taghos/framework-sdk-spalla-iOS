@@ -1419,7 +1419,8 @@ public class PlayerController : Combine.ObservableObject {
     @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
     set
   }
-  public init()
+  public var onEnded: (() -> Swift.Void)?
+  public init(onEnded: (() -> Swift.Void)? = nil)
   @_Concurrency.MainActor public func togglePlayPause()
   @_Concurrency.MainActor public func play()
   @_Concurrency.MainActor public func pause()
